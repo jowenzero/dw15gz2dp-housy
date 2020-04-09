@@ -40,7 +40,7 @@ const Header = () => {
                 
                 <Nav>
                     <Button variant="white" size="lg" className="home-sign-in" onClick={showSignIn}>Sign In</Button>
-                    <Button variant="light" size="lg" onClick={showSignUp}>Sign Up</Button>
+                    <Button variant="dark" size="lg" onClick={showSignUp}>Sign Up</Button>
                 </Nav>
             </Navbar>
 
@@ -50,24 +50,24 @@ const Header = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                <Form>
-                    <Form.Group controlId="signInUsername">
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" required/>
-                    </Form.Group>
+                    <Form>
+                        <Form.Group controlId="signInUsername">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="text" required/>
+                        </Form.Group>
 
-                    <Form.Group controlId="signInPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" required/>
-                    </Form.Group>
-                    <br/>
-                    
-                    <Link to="/login">
-                        <Button variant="primary" type="submit" block>
-                            Sign In
-                        </Button>
-                    </Link>
-                </Form>
+                        <Form.Group controlId="signInPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" required/>
+                        </Form.Group>
+                        <br/>
+                        
+                        <Link to="/login">
+                            <Button variant="primary" type="submit" block>
+                                Sign In
+                            </Button>
+                        </Link>
+                    </Form>
                 </Modal.Body>
 
                 <Modal.Footer>
@@ -84,59 +84,60 @@ const Header = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                <Form>
-                    <Form.Group controlId="signUpFullName">
-                        <Form.Label>Full Name</Form.Label>
-                        <Form.Control type="text" required/>
-                    </Form.Group>
+                    <Form>
+                        <Form.Group controlId="signUpFullName">
+                            <Form.Label>Full Name</Form.Label>
+                            <Form.Control type="text" required/>
+                        </Form.Group>
 
-                    <Form.Group controlId="signUpUsername">
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" required/>
-                    </Form.Group>
+                        <Form.Group controlId="signUpUsername">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="text" required/>
+                        </Form.Group>
 
-                    <Form.Group controlId="signUpEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" required/>
-                    </Form.Group>
+                        <Form.Group controlId="signUpEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" required/>
+                        </Form.Group>
 
-                    <Form.Group controlId="signUpPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" required/>
-                    </Form.Group>
+                        <Form.Group controlId="signUpPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" required/>
+                        </Form.Group>
 
-                    <Form.Group controlId="signUpListAs">
-                        <Form.Label>List As</Form.Label>
-                        <Form.Control as="select" required>
-                            <option>Tenant</option>
-                            <option>Owner</option>
-                        </Form.Control>
-                    </Form.Group>
+                        <Form.Group controlId="signUpListAs">
+                            <Form.Label>List As</Form.Label>
+                            <Form.Control as="select" required>
+                                <option>Tenant</option>
+                                <option>Owner</option>
+                            </Form.Control>
+                        </Form.Group>
 
-                    <Form.Group controlId="signUpGender">
-                        <Form.Label>Gender</Form.Label>
-                        <Form.Control as="select" required>
-                            <option>Male</option>
-                            <option>Female</option>
-                        </Form.Control>
-                    </Form.Group>
+                        <Form.Group controlId="signUpGender">
+                            <Form.Label>Gender</Form.Label>
+                            <Form.Control as="select" required>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </Form.Control>
+                        </Form.Group>
 
-                    <Form.Group controlId="signUpPhone" required>
-                        <Form.Label>Phone</Form.Label>
-                        <Form.Control type="tel" pattern="[0-9]{12}" placeholder="Ex. 081234567890"/>
-                    </Form.Group>
+                        <Form.Group controlId="signUpPhone" required>
+                            <Form.Label>Phone</Form.Label>
+                            <Form.Control type="tel" pattern="[0-9]{12}" placeholder="Ex. 081234567890"/>
+                        </Form.Group>
 
-                    <Form.Group controlId="signUpAddress" required>
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control as="textarea" rows="3"/>
-                    </Form.Group>
-                    <br/>
-                    <Link to="/login">
-                        <Button variant="primary" type="submit" block>
-                            Sign Up
-                        </Button>
-                    </Link>
-                </Form>
+                        <Form.Group controlId="signUpAddress" required>
+                            <Form.Label>Address</Form.Label>
+                            <Form.Control as="textarea" rows="3"/>
+                        </Form.Group>
+                        <br/>
+                        
+                        <Link to="/login">
+                            <Button variant="primary" type="submit" block>
+                                Sign Up
+                            </Button>
+                        </Link>
+                    </Form>
                 </Modal.Body>
             </Modal>
         </Container>

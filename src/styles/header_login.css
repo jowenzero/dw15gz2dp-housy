@@ -36,3 +36,8 @@
     border: 2px solid #D2D2D2;
     transform: rotate(90deg);
 }
+
+.home-transparent { 
+    background-color:rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0,0,0,0);
+}

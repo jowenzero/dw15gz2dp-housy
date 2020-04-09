@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap';
+import { Container, Navbar, Nav , Form, FormControl, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from '../icons/Logo.svg'
 
@@ -20,9 +20,19 @@ const Header = () => {
                 </Form>
                 
                 <Nav>
-                    <Link to="/">
-                        <Button variant="dark" size="lg">Profile</Button>
-                    </Link>
+                    <Dropdown alignRight>
+                        <Dropdown.Toggle variant="secondary" id="dropdown-basic" className="home-transparent">
+                            <img src={ process.env.PUBLIC_URL + "../images/ProfPic.png" } alt=""></img>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="login/profile">Profile</Dropdown.Item>
+                            <Dropdown.Item href="login/booking">My Booking</Dropdown.Item>
+                            <Dropdown.Item href="login/history">History</Dropdown.Item>
+                            <Dropdown.Divider/>
+                            <Dropdown.Item href="/">Logout</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </Nav>
             </Navbar>
         </Container>
