@@ -1,0 +1,11 @@
+@import "../styles/header.css";
+@import "../styles/filter.css";
+@import "../styles/content.css";
+
+.home-logo {
+    position: absolute;
+    width: 138px;
+    height: 71px;
+    left: 50px;
+    top: 24px;
+}
