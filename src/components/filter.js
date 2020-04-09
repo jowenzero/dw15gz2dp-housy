@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 
 import '../styles/filter.css';
 
-import Calendar from '../svg/Calendar.svg'
+import Calendar from '../icons/Calendar.svg'
 
 class Filter extends Component {
     state = {
@@ -22,7 +22,6 @@ class Filter extends Component {
             <Container fluid>
                 <br/>
                 <h1 className="filter-bold-text">Type Of Rent</h1>
-                
                 <Row>
                     <Col xs={4}><Button variant="light" size="lg">Day</Button></Col>
                     <Col xs={4}><Button variant="light" size="lg">Month</Button></Col>
@@ -62,9 +61,13 @@ class Filter extends Component {
                 <br/>
 
                 <h1 className="filter-bold-text">Amenities</h1>
-                <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" />
-                <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" />
-                <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" />
+                <Form>
+                    <div className="mb-3">
+                        <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" />
+                        <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" />
+                        <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" />
+                    </div>
+                </Form>
                 <br/>
 
                 <h1 className="filter-bold-text">Budget</h1>

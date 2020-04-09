@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "picture": "../png/House1.png",
+        "picture": "../images/House1.png",
         "condition": "Furnished",
         "price": "Rp.9.000.000 / Year",
         "description": "3 Beds, 2 Baths, 1,800 sqft",
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "picture": "../png/House2.png",
+        "picture": "../images/House2.png",
         "condition": "Furnished",
         "price": "Rp.3.000.000 / Year",
         "description": "1 Beds, 1 Baths, 800 sqft",
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "picture": "../png/House3.png",
+        "picture": "../images/House3.png",
         "condition": "Furnished",
         "price": "Rp.5.000.000 / Year",
         "description": "2 Beds, 1 Baths, 1,200 sqft",
@@ -25,7 +25,7 @@
     },
     {
         "id": 4,
-        "picture": "../png/House4.png",
+        "picture": "../images/House4.png",
         "condition": "Furnished",
         "price": "Rp.13.000.000 / Year",
         "description": "4 Beds, 3 Baths, 2,200 sqft",
@@ -33,7 +33,7 @@
     },
     {
         "id": 5,
-        "picture": "../png/House5.png",
+        "picture": "../images/House5.png",
         "condition": "Furnished",
         "price": "Rp.3.500.000 / Year",
         "description": "1 Beds, 1 Baths, 810 sqft",
@@ -41,7 +41,7 @@
     },
     {
         "id": 6,
-        "picture": "../png/House6.png",
+        "picture": "../images/House6.png",
         "condition": "Furnished",
         "price": "Rp.5.500.000 / Year",
         "description": "2 Beds, 2 Baths, 1,900 sqft",
@@ -49,7 +49,7 @@
     },
     {
         "id": 7,
-        "picture": "../png/House7.png",
+        "picture": "../images/House7.png",
         "condition": "Furnished",
         "price": "Rp.3.000.000 / Year",
         "description": "3 Beds, 2 Baths, 1,800 sqft",
@@ -57,7 +57,7 @@
     },
     {
         "id": 8,
-        "picture": "../png/House8.png",
+        "picture": "../images/House8.png",
         "condition": "Furnished",
         "price": "Rp.3.000.000 / Year",
         "description": "3 Beds, 2 Baths, 1,800 sqft",
@@ -65,7 +65,7 @@
     },
     {
         "id": 9,
-        "picture": "../png/House9.png",
+        "picture": "../images/House9.png",
         "condition": "Furnished",
         "price": "Rp.3.000.000 / Year",
         "description": "3 Beds, 2 Baths, 1,800 sqft",
