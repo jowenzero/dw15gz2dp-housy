@@ -70,5 +70,53 @@
         "price": "Rp.3.000.000 / Year",
         "description": "3 Beds, 2 Baths, 1,800 sqft",
         "location": "Tangerang Selatan, Podok Aren"
+    },
+    {
+        "id": 10,
+        "picture": "../images/House1.png",
+        "condition": "Furnished",
+        "price": "Rp.9.000.000 / Year",
+        "description": "3 Beds, 2 Baths, 1,800 sqft",
+        "location": "Tangerang Selatan, Podok Aren"
+    },
+    {
+        "id": 11,
+        "picture": "../images/House1.png",
+        "condition": "Furnished",
+        "price": "Rp.9.000.000 / Year",
+        "description": "3 Beds, 2 Baths, 1,800 sqft",
+        "location": "Tangerang Selatan, Podok Aren"
+    },
+    {
+        "id": 12,
+        "picture": "../images/House1.png",
+        "condition": "Furnished",
+        "price": "Rp.9.000.000 / Year",
+        "description": "3 Beds, 2 Baths, 1,800 sqft",
+        "location": "Tangerang Selatan, Podok Aren"
+    },
+    {
+        "id": 13,
+        "picture": "../images/House1.png",
+        "condition": "Furnished",
+        "price": "Rp.9.000.000 / Year",
+        "description": "3 Beds, 2 Baths, 1,800 sqft",
+        "location": "Tangerang Selatan, Podok Aren"
+    },
+    {
+        "id": 14,
+        "picture": "../images/House1.png",
+        "condition": "Furnished",
+        "price": "Rp.9.000.000 / Year",
+        "description": "3 Beds, 2 Baths, 1,800 sqft",
+        "location": "Tangerang Selatan, Podok Aren"
+    },
+    {
+        "id": 15,
+        "picture": "../images/House1.png",
+        "condition": "Furnished",
+        "price": "Rp.9.000.000 / Year",
+        "description": "3 Beds, 2 Baths, 1,800 sqft",
+        "location": "Tangerang Selatan, Podok Aren"
     }
 ]

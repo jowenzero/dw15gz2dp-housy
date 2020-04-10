@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, Form, FormControl } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
 
 import '../styles/filter.css';
 
 import Calendar from '../icons/Calendar.svg'
 
 class Filter extends Component {
-    state = {
-        startDate: new Date()
-    };
-     
-    handleChange = date => {
-        this.setState({
-            startDate: date
-        });
-    };
-
     render() {
         return (
             <Container fluid>
@@ -33,10 +22,9 @@ class Filter extends Component {
                 <Form inline className="home-date-rect">
                     <img src={Calendar} alt="" className="home-date-calendar"></img>
                     <div className="home-date-line"></div>
-                    <DatePicker
-                        selected={this.state.startDate}
-                        onChange={this.handleChange}
-                    />
+                    <Form.Group controlId="filterDate">
+                        <Form.Control type="date" required/>
+                    </Form.Group>
                 </Form>
                 <br/>
 

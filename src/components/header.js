@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Navbar, Nav, Button, Form, FormControl, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Logo from '../icons/Logo.svg'
 
 import '../styles/header.css';
 
 import SearchIcon from '../icons/SearchIcon.svg'
+import Logo from '../icons/Logo.svg'
 
 const Header = () => {
     const [isSignInOpen, setIsSignInOpen] = React.useState(false);
@@ -27,6 +27,11 @@ const Header = () => {
         setIsSignUpOpen(false);
     };
 
+    const signIn = () => {
+        const data = 'true';
+        localStorage.setItem('userLogin', data);
+    };
+
     return (
         <Container fluid>
             <Navbar bg="white" className="justify-content-between">
@@ -43,6 +48,10 @@ const Header = () => {
                     <Button variant="dark" size="lg" onClick={showSignUp}>Sign Up</Button>
                 </Nav>
             </Navbar>
+
+
+
+            
 
             <Modal show={isSignInOpen} onHide={hideSignIn}>
                 <Modal.Header closeButton>
@@ -62,11 +71,9 @@ const Header = () => {
                         </Form.Group>
                         <br/>
                         
-                        <Link to="/login">
-                            <Button variant="primary" type="submit" block>
-                                Sign In
-                            </Button>
-                        </Link>
+                        <Button variant="primary" type="submit" onClick={signIn} block>
+                            Sign In
+                        </Button>
                     </Form>
                 </Modal.Body>
 
@@ -77,6 +84,10 @@ const Header = () => {
                     }}>Don't have an account? <b>Click Here!</b></p>
                 </Modal.Footer>
             </Modal>
+
+
+
+
 
             <Modal show={isSignUpOpen} onHide={hideSignUp}>
                 <Modal.Header closeButton>
@@ -132,11 +143,9 @@ const Header = () => {
                         </Form.Group>
                         <br/>
                         
-                        <Link to="/login">
-                            <Button variant="primary" type="submit" block>
-                                Sign Up
-                            </Button>
-                        </Link>
+                        <Button variant="primary" type="submit" onClick={signIn} block>
+                            Sign Up
+                        </Button>
                     </Form>
                 </Modal.Body>
             </Modal>

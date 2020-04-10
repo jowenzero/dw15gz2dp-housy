@@ -1,13 +1,19 @@
 import React from 'react';
 import { Container, Navbar, Nav , Form, FormControl, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Logo from '../icons/Logo.svg'
 
-import '../styles/header_login.css';
+import '../styles/header.css';
 
 import SearchIcon from '../icons/SearchIcon.svg'
+import Logo from '../icons/Logo.svg'
 
 const Header = () => {
+    const logOut = () => {
+        const data = 'false';
+        localStorage.setItem('userLogin', data);
+        window.location.reload(true);
+    };
+
     return (
         <Container fluid>
             <Navbar bg="white" className="justify-content-between">
@@ -21,16 +27,16 @@ const Header = () => {
                 
                 <Nav>
                     <Dropdown alignRight>
-                        <Dropdown.Toggle variant="secondary" id="dropdown-basic" className="home-transparent">
+                        <Dropdown.Toggle variant="white" id="dropdown-basic" className="home-transparent">
                             <img src={ process.env.PUBLIC_URL + "../images/ProfPic.png" } alt=""></img>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="login/profile">Profile</Dropdown.Item>
-                            <Dropdown.Item href="login/booking">My Booking</Dropdown.Item>
-                            <Dropdown.Item href="login/history">History</Dropdown.Item>
+                            <Dropdown.Item href="profile">Profile</Dropdown.Item>
+                            <Dropdown.Item href="booking">My Booking</Dropdown.Item>
+                            <Dropdown.Item href="history">History</Dropdown.Item>
                             <Dropdown.Divider/>
-                            <Dropdown.Item href="/">Logout</Dropdown.Item>
+                            <Dropdown.Item onClick={ logOut } href="/">Logout</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Nav>

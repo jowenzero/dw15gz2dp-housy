@@ -10,11 +10,9 @@ const Content = (props) => {
     ))
 
     return (
-        <Container fluid>
-            <div className="home-content">
-                <div className="flex-container">
-                    { data }
-                </div>
+        <Container fluid className="content-bg">
+            <div className="flex-container">
+                { data }
             </div>
         </Container>
     );

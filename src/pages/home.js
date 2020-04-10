@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import Header from '../components/header'
+import Login from '../components/login'
 import Filter from '../components/filter'
 import Content from '../components/content'
-import '../styles/home.css';
-import Data from '../data.json';
-
+import Data from '../data/data.json';
 
 class Home extends Component {
     constructor() {
@@ -21,15 +19,17 @@ class Home extends Component {
         const state = this.state;
 
         return (
-            <Container fluid>
-                <Header/>
-                <Row>
-                    <Col xs={4}><Filter/></Col>
-                    <Col xs={8}><Content data={state.data}/></Col>
-                </Row>
-            </Container>
+            <div>
+                <Login/>
+                <Container fluid>
+                    <Row>
+                        <Col xs={4}><Filter/></Col>
+                        <Col xs={8}><Content data={state.data}/></Col>
+                    </Row>
+                </Container>
+            </div>
         );
-    }z
+    }
 }
 
 export default Home;
