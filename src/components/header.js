@@ -134,7 +134,7 @@ const Header = () => {
 
                         <Form.Group controlId="signUpPhone" required>
                             <Form.Label>Phone</Form.Label>
-                            <Form.Control type="tel" pattern="[0-9]{12}" placeholder="Ex. 081234567890"/>
+                            <Form.Control type="tel" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="Ex. 0812-3456-7890"/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpAddress" required>
