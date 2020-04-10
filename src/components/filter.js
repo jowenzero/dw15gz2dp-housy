@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Form, FormControl } from 'react-bootstrap'
 
 import '../styles/filter.css';
 
-import Calendar from '../icons/Calendar.svg'
+import Calendar from '../icons/Calendar.svg';
 
 class Filter extends Component {
     render() {

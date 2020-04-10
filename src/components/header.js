@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Navbar, Nav, Button, Form, FormControl, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { MdSearch } from "react-icons/md";
 
 import '../styles/header.css';
 
-import SearchIcon from '../icons/SearchIcon.svg'
 import Logo from '../icons/Logo.svg'
 
 const Header = () => {
@@ -33,14 +33,14 @@ const Header = () => {
     };
 
     return (
-        <Container fluid>
-            <Navbar bg="white" className="justify-content-between">
+        <Container fluid className="padding">
+            <Navbar bg="white" className="justify-content-between" fixed="top">
                 <Navbar.Brand><Link to="/"><img src={Logo} alt=""></img></Link></Navbar.Brand>
 
                 <Form inline className="home-rect">
                     <FormControl type="text" placeholder="Search location" className="mr-sm-2 home-search-text" />
                     <div className="home-search-line"/>
-                    <img src={SearchIcon} alt=""></img>
+                    <MdSearch className="home-icons"/>
                 </Form>
                 
                 <Nav>
