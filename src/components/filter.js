@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, Form, FormControl } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
 
 import '../styles/filter.css';
 
-import Calendar from '../svg/Calendar.svg'
+import Calendar from '../icons/Calendar.svg';
 
 class Filter extends Component {
-    state = {
-        startDate: new Date()
-    };
-     
-    handleChange = date => {
-        this.setState({
-            startDate: date
-        });
-    };
-
     render() {
         return (
             <Container fluid>
                 <br/>
                 <h1 className="filter-bold-text">Type Of Rent</h1>
-                
                 <Row>
                     <Col xs={4}><Button variant="light" size="lg">Day</Button></Col>
                     <Col xs={4}><Button variant="light" size="lg">Month</Button></Col>
@@ -34,10 +22,9 @@ class Filter extends Component {
                 <Form inline className="home-date-rect">
                     <img src={Calendar} alt="" className="home-date-calendar"></img>
                     <div className="home-date-line"></div>
-                    <DatePicker
-                        selected={this.state.startDate}
-                        onChange={this.handleChange}
-                    />
+                    <Form.Group controlId="filterDate">
+                        <Form.Control type="date" required/>
+                    </Form.Group>
                 </Form>
                 <br/>
 
@@ -62,9 +49,13 @@ class Filter extends Component {
                 <br/>
 
                 <h1 className="filter-bold-text">Amenities</h1>
-                <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" />
-                <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" />
-                <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" />
+                <Form>
+                    <div className="mb-3">
+                        <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" />
+                        <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" />
+                        <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" />
+                    </div>
+                </Form>
                 <br/>
 
                 <h1 className="filter-bold-text">Budget</h1>

@@ -1,0 +1,55 @@
+.property-bg {
+    background: #F9F9F9;
+}
+
+.property-area {
+    width: 1018px;
+    left: 211px;
+    top: 139px;
+}
+
+.property-name {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+
+    color: #000000;
+}
+
+.property-price {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+
+    color: #000000;
+}
+
+.property-location {
+    width: 290px;
+    height: 34px;
+
+    font-family: Montserrat;
+    font-size: 13px;
+
+    color: #A8A8A8;
+}
+
+.property-desc-title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+
+    color: #000000;
+}
+
+.property-description {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+
+    color: #A8A8A8;
+}

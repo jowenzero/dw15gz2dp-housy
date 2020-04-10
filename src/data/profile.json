@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "picture": "../images/Profile.png",
+        "name": "Radif Ganteng",
+        "email": "radifgans@gmail.com",
+        "status": "Tenant",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "address": "Perumahan Permata Bintaro Residence C-3"
+    }
+]

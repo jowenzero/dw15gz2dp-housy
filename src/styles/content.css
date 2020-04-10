@@ -1,14 +1,11 @@
 /*=======================================
             CONTENT COMPONENTS
 ========================================*/
-.home-content {
-    min-width: 1000px;
-    min-height: 1000px;
-
-    background: rgba(196, 196, 196, 0.25);
-}
-
 .flex-container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.content-bg {
+    background: rgba(196, 196, 196, 0.25);
 }

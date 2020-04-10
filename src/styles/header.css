@@ -5,6 +5,10 @@
     min-height: 120px;
 }
 
+.padding {
+    padding-top: 120px;
+}
+
 .home-rect {
     width: 340px;
     height: 50px;
@@ -39,4 +43,16 @@
 
 .home-sign-in {
     color: #A7A7A7;
+}
+
+.home-transparent { 
+    background-color:rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.home-icons {
+    position: relative;
+    left: -7px;
+    width: 35px;
+    height: 35px;
 }
