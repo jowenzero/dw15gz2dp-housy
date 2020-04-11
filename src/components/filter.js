@@ -51,9 +51,11 @@ class Filter extends Component {
                 <h1 className="filter-bold-text">Amenities</h1>
                 <Form>
                     <div className="mb-3">
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" />
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" />
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" />
+                        <Form.Group controlId="filterAmenities">
+                            <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" id="1"/>
+                            <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" id="2"/>
+                            <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" id="3"/>
+                        </Form.Group>
                     </div>
                 </Form>
                 <br/>
@@ -67,7 +69,7 @@ class Filter extends Component {
 
                 <Row>
                     <Col xs={8}></Col>
-                    <Col xs={4}><Button variant="primary" size="lg">APPLY</Button></Col>
+                    <Col xs={4}><Button variant="primary" size="lg" href="/">APPLY</Button></Col>
                 </Row>
                 <br/><br/>
             </Container>
