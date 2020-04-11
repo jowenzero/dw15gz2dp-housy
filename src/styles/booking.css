@@ -126,6 +126,14 @@
     left: -2px;
 }
 
+.booking-barcode {
+    position: relative;
+    width: 100px;
+    height: 132px;
+    top: 20px;
+    left: 50px;
+}
+
 .booking-rect-line {
     position: relative;
     width: 1035px;
@@ -138,6 +146,10 @@
 
 .booking-text-red {
     color: #FF0000;
+}
+
+.booking-text-green {
+    color: #3CF71E;
 }
 
 .booking-button {

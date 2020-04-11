@@ -5,11 +5,13 @@ import Home from './pages/home';
 import Property from './pages/property';
 import Profile from './pages/profile';
 import Booking from './pages/booking';
+import History from './pages/history';
 import './styles/App.css';
 
 const App = () => (
   <Router>
     <Switch>  
+      <Route path="/history" exact component={History}/>
       <Route path="/booking" exact component={Booking}/>
       <Route path="/profile" exact component={Profile}/>
       <Route path="/property" exact component={Property}/>
