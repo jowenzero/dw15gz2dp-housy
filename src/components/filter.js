@@ -12,9 +12,9 @@ class Filter extends Component {
                 <br/>
                 <h1 className="filter-bold-text">Type Of Rent</h1>
                 <Row>
-                    <Col xs={4}><Button variant="light" size="lg">Day</Button></Col>
-                    <Col xs={4}><Button variant="light" size="lg">Month</Button></Col>
-                    <Col xs={4}><Button variant="light" size="lg">Year</Button></Col>
+                    <Col xs={3}><Button variant="light" size="lg" className="home-button">Day</Button></Col>
+                    <Col xs={3}><Button variant="light" size="lg" className="home-button">Month</Button></Col>
+                    <Col xs={3}><Button variant="light" size="lg" className="home-button">Year</Button></Col>
                 </Row>
                 <br/>
 
@@ -31,29 +31,31 @@ class Filter extends Component {
                 <h1 className="filter-bold-text">Property Room</h1>
                 <p className="filter-regular-text">Bedroom</p>
                 <Row>
-                    <Col xs={2}><Button variant="light" size="lg">1</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">2</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">3</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">4</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">5</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">1</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">2</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">3</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">4</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">5</Button></Col>
                 </Row>
                 <br/>
                 <p className="filter-regular-text">Bathroom</p>
                 <Row>
-                    <Col xs={2}><Button variant="light" size="lg">1</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">2</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">3</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">4</Button></Col>
-                    <Col xs={2}><Button variant="light" size="lg">5</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">1</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">2</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">3</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">4</Button></Col>
+                    <Col xs={2}><Button variant="light" size="lg" className="home-small-button">5</Button></Col>
                 </Row>
                 <br/>
 
                 <h1 className="filter-bold-text">Amenities</h1>
                 <Form>
                     <div className="mb-3">
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" />
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" />
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" />
+                        <Form.Group controlId="filterAmenities">
+                            <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" id="1"/>
+                            <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" id="2"/>
+                            <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" id="3"/>
+                        </Form.Group>
                     </div>
                 </Form>
                 <br/>
@@ -66,8 +68,8 @@ class Filter extends Component {
                 <br/><br/>
 
                 <Row>
-                    <Col xs={8}></Col>
-                    <Col xs={4}><Button variant="primary" size="lg">APPLY</Button></Col>
+                    <Col xs={7}></Col>
+                    <Col xs={5}><Button variant="primary" size="lg" href="/">APPLY</Button></Col>
                 </Row>
                 <br/><br/>
             </Container>

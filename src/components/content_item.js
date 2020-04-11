@@ -5,7 +5,7 @@ import '../styles/content_item.css';
 
 const ContentItem = ({item}) => {
     return (
-        <Link to="/property">
+        <Link to="/property" style={{ textDecoration: 'none', color: 'black' }}>
             <div className="content-item">
                 <div className="content-tag-rect">{ item.condition }</div>
                 <img src={ process.env.PUBLIC_URL + item.picture } alt="" className="content-image"></img>
