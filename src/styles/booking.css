@@ -1,0 +1,159 @@
+.booking-bg {
+    background: #F9F9F9;
+    min-height: 760px;
+}
+
+.booking-area {
+    width: 1035px;
+    min-height: 430px;
+    left: 201px;
+    top: 193px;
+    
+    border: 2px solid rgba(183, 183, 183, 0.3);
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.booking-bold-title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+
+    color: #000000;
+}
+
+.booking-bold-text {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+
+    color: #000000;
+}
+
+.booking-light-text {
+    position: relative;
+    top: -15px;
+
+    font-family: Montserrat;
+    font-size: 14px;
+
+    color: #959595;
+}
+
+.booking-light-text2 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+
+    color: #B1B1B1;
+}
+
+.booking-date {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+
+    color: #878787;
+}
+
+.booking-house-name {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+
+    color: #000000;
+}
+
+.booking-location {
+    width: 325px;
+    height: 32px;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+
+    color: #968d8d;
+}
+
+.booking-circle-outline {
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+.booking-line {
+    position: relative;
+    width: 50px;
+    height: 0px;
+    top: 45px;
+    left: 3px;
+
+    border: 1px solid #D0D0D0;
+    transform: rotate(90deg);
+}
+
+.booking-circle-inline {
+    position: relative;
+    top: 85px;
+    left: 20px;
+}
+
+.booking-pic-border {
+    position: relative;
+    width: 139px;
+    height: 139px;
+
+    background: rgba(154, 154, 154, 0.23);
+    border: 3px solid #000000;
+    box-sizing: border-box;
+}
+
+.booking-pic {
+    position: relative;
+    width: 138px;
+    height: 138px;
+    top: -2px;
+    left: -2px;
+}
+
+.booking-rect-line {
+    position: relative;
+    width: 1035px;
+    height: 0px;
+    top: -5px;
+    left: -17px;
+
+    border: 1px solid rgba(183, 183, 183, 0.5);
+}
+
+.booking-text-red {
+    color: #FF0000;
+}
+
+.booking-button {
+    position: relative;
+    width: 213px;
+    height: 50px;
+    left: 1100px;
+}
+
+.booking-popup {
+    position: relative;
+    left: -200px;
+    width: 800px;
+    height: 100px;
+
+    background: #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+}
