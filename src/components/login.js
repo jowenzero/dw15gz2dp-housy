@@ -5,7 +5,7 @@ import Header from '../components/header'
 
 const Login = () => {
     if (localStorage.getItem('userLogin') === 'true') {
-        return <HeaderLogin/>
+        return <HeaderLogin role={localStorage.getItem('userListAs')}/>
     }
     else {
         return <Header/>
