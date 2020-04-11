@@ -21,8 +21,17 @@
     color: #000000;
 }
 
+.home-button {
+    width: 100px;
+}
+
+.home-small-button {
+    width: 55px;
+}
+
 .home-date-rect {
     min-width: 275px;
+    max-width: 400px;
     min-height: 50px;
 
     background: rgba(196, 196, 196, 0.25);

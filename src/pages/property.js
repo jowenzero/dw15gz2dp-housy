@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
+import { IoIosBed } from 'react-icons/io';
+import { FaBath } from 'react-icons/fa';
 
 import '../styles/property.css';
 
@@ -59,17 +61,36 @@ const Property = () => {
                         <Row>
                             <Col><img src={ process.env.PUBLIC_URL + item.picture1 } alt=""></img></Col>
                         </Row>
+                        <p/>
                         <Row>
                             <Col xs={4}><img src={ process.env.PUBLIC_URL + item.picture2 } alt=""></img></Col>
-                            <Col xs={4}><img src={ process.env.PUBLIC_URL + item.picture3 } alt=""></img></Col>
-                            <Col xs={4}><img src={ process.env.PUBLIC_URL + item.picture4 } alt=""></img></Col>
+                            <Col xs={4}><img src={ process.env.PUBLIC_URL + item.picture3 } alt="" className="property-pic"></img></Col>
+                            <Col xs={4}><img src={ process.env.PUBLIC_URL + item.picture4 } alt="" className="property-pic2"></img></Col>
                         </Row>
                         <br/>
                         <h3 className="property-name">{ item.name }</h3>
-                        <p className="property-price">{ item.price }</p>
-                        <p className="property-location">{ item.location }</p>
-                        <br/>
-                        <p className="property-price">{ item.bedrooms }, { item.bathrooms }, { item.area }</p>
+                        <Row>
+                            <Col xs={8}>
+                                <p className="property-price">{ item.price }</p>
+                                <p className="property-location">{ item.location }</p>
+                            </Col>
+                            <Col xs={4}>
+                                <Row>
+                                    <Col xs={4}>
+                                        <p className="property-location property-bold">Bedrooms</p>
+                                        <p className="property-bold-number">{ item.bedrooms } <IoIosBed/></p>
+                                    </Col>
+                                    <Col xs={4}>
+                                        <p className="property-location property-bold">Bathrooms</p>
+                                        <p className="property-bold-number">{ item.bathrooms } <FaBath/></p>
+                                    </Col>
+                                    <Col xs={4}>
+                                        <p className="property-location property-bold">Area</p>
+                                        <p className="property-bold-number">{ item.area } </p>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
                         <br/>
                         <h3 className="property-desc-title">Description</h3>
                         <p className="property-description">{ item.description }</p>

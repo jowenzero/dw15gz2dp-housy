@@ -91,8 +91,8 @@ const Booking = () => {
                                 <div className="booking-pic-border">
                                 <img src={ process.env.PUBLIC_URL + item.picture } alt="" className="booking-pic"></img>
                                 </div>
-                                <br/>   
-                                <p className="booking-light-text" onClick={toggleUpload}>upload payment proof</p>
+                                <br/>    
+                                <p className="booking-light-text booking-upload-text" onClick={toggleUpload}>upload payment proof</p>
                                 { isUploadOpen === true &&
                                     <form action="/booking" method="post" enctype="multipart/form-data">
                                         <input type="file" name="avatar"/>
@@ -126,9 +126,16 @@ const Booking = () => {
                         </Row>
                     </Container>
                     <br/>
-                    { isConfirmOpen !== true &&
-                        <Button variant="primary" size="lg" className="booking-button" onClick={showPopup}>PAY</Button>
-                    }
+                    <Container className="booking-area-borderless">
+                        <Row>
+                            <Col xs={9}/>
+                            <Col xs={3}>
+                                { isConfirmOpen !== true &&
+                                    <Button variant="primary" size="lg" className="booking-button" onClick={showPopup}>PAY</Button>
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
 
                 <Modal show={isPopupOpen} onHide={hidePopup} onClick={() => {
