@@ -86,7 +86,7 @@ const Booking = () => {
                             </Col>
 
                             <Col xs={3}>
-                                <h3 className="booking-bold-title">Booking</h3>
+                                <h3 className="booking-bold-title">BOOKING</h3>
                                 <p className="booking-date">{item.bookDate}</p>
                                 <div className="booking-pic-border">
                                 <img src={ process.env.PUBLIC_URL + item.picture } alt="" className="booking-pic"></img>

@@ -55,7 +55,7 @@ const History = () => {
                             </Col>
 
                             <Col xs={3}>
-                                <h3 className="booking-bold-title">Booking</h3>
+                                <h3 className="booking-bold-title">INVOICE</h3>
                                 <p className="booking-date">{item.bookDate}</p>
                                 <img src={ process.env.PUBLIC_URL + item.barcode } alt="" className="booking-barcode"></img>
                             </Col>
