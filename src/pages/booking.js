@@ -22,4 +22,4 @@ const Booking = () => {
     )
 }
 
-export default Booking
+export default Booking;

@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Astina",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 30 March 2020",
+        "checkIn": "30 March 2020",
+        "checkOut": "30 March 2021",
+        "amenities": "Furnished",
+        "typeOfRent": "Year",
+        "name": "Radif Ganteng",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "rentTime": "1 Year",
+        "total": "Rp. 3.000.000"
+    },
+    {
+        "id": 2,
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Astina",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 5 March 2020",
+        "checkIn": "5 March 2020",
+        "checkOut": "5 March 2021",
+        "amenities": "Furnished",
+        "typeOfRent": "Year",
+        "name": "Haris Rahman",
+        "gender": "Male",
+        "phone": "0838-9863-3113",
+        "rentTime": "1 Year",
+        "total": "Rp. 3.500.000"
+    }
+]

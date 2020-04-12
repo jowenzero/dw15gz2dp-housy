@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 import '../styles/booking.css';
+
 import Logo from '../icons/Logo.svg';
 import CircleInline from '../icons/CircleInline.svg';
 import CircleOutline from '../icons/CircleOutline.svg';
@@ -98,4 +99,4 @@ const TransactionAction = ({item}) => {
     )
 }
 
-export default TransactionAction
+export default TransactionAction;

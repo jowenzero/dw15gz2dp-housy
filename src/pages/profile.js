@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button, Modal, Form, DropdownButton } from 'react-bootstrap';
 import { AiOutlineUser, AiOutlineMail, AiOutlineLock, AiOutlinePhone, AiOutlineHome } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
-import { IoIosTransgender } from "react-icons/io"
+import { IoIosTransgender } from "react-icons/io";
 
 import '../styles/profile.css';
 
@@ -105,4 +105,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default Profile;

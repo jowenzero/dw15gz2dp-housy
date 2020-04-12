@@ -1,40 +1,14 @@
 import React from 'react';
-import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import '../styles/booking.css';
 
 import Logo from '../icons/Logo.svg';
 import CircleInline from '../icons/CircleInline.svg';
 import CircleOutline from '../icons/CircleOutline.svg';
-import WaitPayment from '../icons/WaitPayment.svg';
-import WaitApprove from '../icons/WaitApprove.svg';
+import Approved from '../icons/Approved.svg';
 
-const BookingItem = ({item}) => {
-    const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-    const [isConfirmOpen, setIsConfirmOpen] = React.useState(false);
-    const [isUploadOpen, setIsUploadOpen] = React.useState(false);
-
-    const showPopup = () => {
-        setIsPopupOpen(true);
-    };
-
-    const hidePopup = () => {
-        setIsPopupOpen(false);
-    };
-
-    const showConfirm = () => {
-        setIsConfirmOpen(true);
-    };
-
-    const toggleUpload =() => {
-        if (isUploadOpen === false) {
-            setIsUploadOpen(true);
-        }
-        else {
-            setIsUploadOpen(false);
-        }
-    };
-    
+const HistoryItem = ({item}) => {  
     return (
         <>
             <Container fluid className="booking-area">
@@ -50,12 +24,7 @@ const BookingItem = ({item}) => {
                                 <p/>
                                 <p className="booking-location">{item.location}</p>
                                 <p/>
-                                { isConfirmOpen === true &&
-                                    <img src={WaitApprove} alt=""></img>
-                                }
-                                { isConfirmOpen !== true &&
-                                    <img src={WaitPayment} alt=""></img>
-                                }
+                                <img src={Approved} alt=""></img>
                             </Col>
                             <Col xs={1}>
                                 <img src={CircleOutline} alt="" className="booking-circle-outline"></img>
@@ -80,18 +49,9 @@ const BookingItem = ({item}) => {
                     </Col>
 
                     <Col xs={3}>
-                        <h3 className="booking-bold-title">BOOKING</h3>
+                        <h3 className="booking-bold-title">INVOICE</h3>
                         <p className="booking-date">{item.bookDate}</p>
-                        <div className="booking-pic-border">
-                        <img src={ process.env.PUBLIC_URL + item.picture } alt="" className="booking-pic"></img>
-                        </div>
-                        <br/>    
-                        <p className="booking-light-text booking-upload-text" onClick={toggleUpload}>upload payment proof</p>
-                        { isUploadOpen === true &&
-                            <form action="/booking" method="post" enctype="multipart/form-data">
-                                <input type="file" name="avatar"/>
-                            </form>
-                        }
+                        <img src={ process.env.PUBLIC_URL + item.barcode } alt="" className="booking-barcode"></img>
                     </Col>
                 </Row>
 
@@ -116,33 +76,12 @@ const BookingItem = ({item}) => {
                 <Row>
                     <Col xs={8}/>
                     <Col xs={2}><p className="booking-bold-text">Total:</p></Col>
-                    <Col><p className="booking-bold-text booking-text-red">{item.total}</p></Col>
+                    <Col><p className="booking-bold-text booking-text-green">{item.total}</p></Col>
                 </Row>
             </Container>
-            <br/>
-            <Container className="booking-area-borderless">
-                <Row>
-                    <Col xs={9}/>
-                    <Col xs={3}>
-                        { isConfirmOpen !== true &&
-                            <Button variant="primary" size="lg" className="booking-button" onClick={showPopup}>PAY</Button>
-                        }
-                    </Col>
-                </Row>
-            </Container>
-
-            
-            <Modal show={isPopupOpen} onHide={hidePopup} onClick={() => {
-                    hidePopup();
-                    showConfirm();
-                }} centered>
-                <Modal.Body className="booking-popup">
-                    <p className="booking-bold-text">Pembayaran anda akan di konfirmasi dalam 1 x 24 Jam </p>
-                    <p className="booking-bold-text">Untuk melihat pesanan Klik Disini Terima Kasih</p>
-                </Modal.Body>
-            </Modal>
+            <br/><br/>
         </>
     )
 }
 
-export default BookingItem;
+export default HistoryItem;

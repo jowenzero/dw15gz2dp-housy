@@ -17,4 +17,4 @@ const ContentItem = ({item}) => {
     )
 }
 
-export default ContentItem
+export default ContentItem;

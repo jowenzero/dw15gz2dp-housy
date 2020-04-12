@@ -8,7 +8,7 @@ import '../styles/header.css';
 
 import Logo from '../icons/Logo.svg'
 
-const Header = ({role}) => {
+const HeaderLogin = ({role}) => {
     const logOut = () => {
         const data = 'false';
         localStorage.setItem('userLogin', data);
@@ -54,4 +54,4 @@ const Header = ({role}) => {
     );
 }
 
-export default Header;
+export default HeaderLogin;

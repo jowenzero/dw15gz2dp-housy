@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import ContentItem from '../components/content_item';
 import '../styles/content.css';
+
+import ContentItem from '../components/content_item';
 
 const Content = (props) => {
     const data = props.data.map((item, index) => (

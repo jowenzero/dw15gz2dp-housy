@@ -106,7 +106,9 @@ const Property = () => {
                         <h3 className="property-desc-title">Description</h3>
                         <p className="property-description">{ item.description }</p>
                         <br/>
-                        <Button variant="primary" size="lg" onClick={verifyLogin}>BOOK NOW</Button>
+                        { (localStorage.getItem('userListAs') === 'Tenant' || localStorage.getItem('userLogin') === 'false') &&
+                            <Button variant="primary" size="lg" onClick={verifyLogin}>BOOK NOW</Button>
+                        }
                         <br/><br/><br/><br/>
                     </Container>
                 </div>
@@ -131,7 +133,7 @@ const Property = () => {
                                 <Form.Control type="date" required/>
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" block>
+                            <Button variant="primary" type="submit" href="/booking" block>
                                 Order
                             </Button>
                         </Form>
@@ -245,4 +247,4 @@ const Property = () => {
     )
 }
 
-export default Property
+export default Property;

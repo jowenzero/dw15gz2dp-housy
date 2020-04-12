@@ -4,9 +4,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/transaction.css';
 import '../styles/transaction_item.css';
 
-import Login from '../components/login'
+import Login from '../components/login';
 import Data from '../data/transaction.json';
-import TransactionItem from '../components/transaction_item'
+import TransactionItem from '../components/transaction_item';
 
 const Transaction = () => {
     const data = Data.map((item, index) => (
@@ -37,4 +37,4 @@ const Transaction = () => {
     )
 }
 
-export default Transaction
+export default Transaction;
