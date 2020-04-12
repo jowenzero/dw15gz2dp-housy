@@ -12,6 +12,7 @@ const Property = () => {
     const [isBookOpen, setIsBookOpen] = React.useState(false);
     const [isSignInOpen, setIsSignInOpen] = React.useState(false);
     const [isSignUpOpen, setIsSignUpOpen] = React.useState(false);
+    const [listAs, setListAs] = React.useState("Tenant");
 
     const showBook = () => {
         setIsBookOpen(true);
@@ -37,9 +38,19 @@ const Property = () => {
         setIsSignUpOpen(false);
     };
 
+    const handleOnChange = (event) => {
+        setListAs(event.target.value);
+    };
+
     const signIn = () => {
         const data = 'true';
         localStorage.setItem('userLogin', data);
+    };
+
+    const signUp = () => {
+        const data = 'true';
+        localStorage.setItem('userLogin', data);
+        localStorage.setItem('userListAs', listAs);
     };
 
     const verifyLogin = () => {
@@ -165,6 +176,7 @@ const Property = () => {
 
 
 
+
                 <Modal show={isSignUpOpen} onHide={hideSignUp}>
                     <Modal.Header closeButton>
                         <Modal.Title>Sign Up</Modal.Title>
@@ -174,27 +186,30 @@ const Property = () => {
                         <Form>
                             <Form.Group controlId="signUpFullName">
                                 <Form.Label>Full Name</Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="text"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpUsername">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" required/>
+                                <Form.Control type="text"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpEmail">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" required/>
+                                <Form.Control type="email"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" required/>
+                                <Form.Control type="password"/>
                             </Form.Group>
 
                             <Form.Group controlId="signUpListAs">
                                 <Form.Label>List As</Form.Label>
-                                <Form.Control as="select" required>
+                                <Form.Control as="select" required
+                                    value={listAs}
+                                    onChange={handleOnChange}
+                                >
                                     <option>Tenant</option>
                                     <option>Owner</option>
                                 </Form.Control>
@@ -202,24 +217,24 @@ const Property = () => {
 
                             <Form.Group controlId="signUpGender">
                                 <Form.Label>Gender</Form.Label>
-                                <Form.Control as="select" required>
+                                <Form.Control as="select">
                                     <option>Male</option>
                                     <option>Female</option>
                                 </Form.Control>
                             </Form.Group>
 
-                            <Form.Group controlId="signUpPhone" required>
+                            <Form.Group controlId="signUpPhone">
                                 <Form.Label>Phone</Form.Label>
                                 <Form.Control type="tel" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="Ex. 0812-3456-7890"/>
                             </Form.Group>
 
-                            <Form.Group controlId="signUpAddress" required>
+                            <Form.Group controlId="signUpAddress">
                                 <Form.Label>Address</Form.Label>
                                 <Form.Control as="textarea" rows="3"/>
                             </Form.Group>
                             <br/>
                             
-                            <Button variant="primary" type="submit" onClick={signIn} block>
+                            <Button variant="primary" type="submit" onClick={signUp} block>
                                 Sign Up
                             </Button>
                         </Form>

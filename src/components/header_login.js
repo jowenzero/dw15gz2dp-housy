@@ -2,8 +2,7 @@ import React from 'react';
 import { Container, Navbar, Nav , Form, FormControl, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdSearch } from "react-icons/md";
-import { GiHouse } from "react-icons/gi";
-import { AiOutlineUser, AiOutlineHistory, AiOutlineCalendar, AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineHistory, AiOutlineCalendar, AiOutlineLogout, AiOutlineTransaction, AiOutlineHome } from "react-icons/ai";
 
 import '../styles/header.css';
 
@@ -36,7 +35,10 @@ const Header = ({role}) => {
                         <Dropdown.Menu>
                             <Dropdown.Item href="profile"><AiOutlineUser className="home-icons"/>Profile</Dropdown.Item>
                             { role === "Owner" &&
-                                <Dropdown.Item href="add-property"><GiHouse className="home-icons"/>Add Property</Dropdown.Item>
+                                <Dropdown.Item href="transaction"><AiOutlineTransaction className="home-icons"/>Incoming Transaction</Dropdown.Item>
+                            }
+                            { role === "Owner" &&
+                                <Dropdown.Item href="add-property"><AiOutlineHome className="home-icons"/>Add Property</Dropdown.Item>
                             }
                             { role === "Tenant" &&
                                 <Dropdown.Item href="booking"><AiOutlineCalendar className="home-icons"/>My Booking</Dropdown.Item>

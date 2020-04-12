@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Radif Ganteng",
+        "typeOfRent": "Year",
+        "transferProof": "bca.id",
+        "status": "Approve"
+    },
+    {
+        "id": 2,
+        "name": "Haris Rahman",
+        "typeOfRent": "Year",
+        "transferProof": "bni.jpg",
+        "status": "Approve"
+    },
+    {
+        "id": 3,
+        "name": "Amin Subagiyo",
+        "typeOfRent": "Month",
+        "transferProof": "permata.jpg",
+        "status": "Cancel"
+    },
+    {
+        "id": 4,
+        "name": "Haris Astina",
+        "typeOfRent": "Month",
+        "transferProof": "permata.jpg",
+        "status": "Pending"
+    },
+    {
+        "id": 5,
+        "name": "Aziz Oni On",
+        "typeOfRent": "Month",
+        "transferProof": "bi.jpg",
+        "status": "Pending"
+    },
+    {
+        "id": 6,
+        "name": "Radif Ganteng",
+        "typeOfRent": "Year",
+        "transferProof": "bni.jpg",
+        "status": "Pending"
+    }
+]

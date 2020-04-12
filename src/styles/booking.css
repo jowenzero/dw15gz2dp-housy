@@ -170,6 +170,11 @@
     height: 50px;
 }
 
+.booking-small-button {
+    width: 150px;
+    height: 50px;
+}
+
 .booking-popup {
     position: relative;
     left: -200px;
