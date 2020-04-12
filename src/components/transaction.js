@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/transaction.css';
 import '../styles/transaction_item.css';
 
-import Login from '../components/login';
 import Data from '../data/transaction.json';
 import TransactionItem from '../components/transaction_item';
 
@@ -15,7 +14,6 @@ const Transaction = () => {
 
     return (
         <div>
-            <Login/>
             <div className="transaction-bg">
                 <h3 className="transaction-title">Incoming Transaction</h3>
                 <div className="transaction-area">

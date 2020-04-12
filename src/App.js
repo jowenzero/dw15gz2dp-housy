@@ -9,12 +9,10 @@ import Profile from './pages/profile';
 import Booking from './pages/booking';
 import History from './pages/history';
 import AddProperty from './pages/add_property';
-import Transaction from './pages/transaction';
 
 const App = () => (
   <Router>
     <Switch>  
-      <Route path="/transaction" exact component={Transaction}/>
       <Route path="/add-property" exact component={AddProperty}/>
       <Route path="/history" exact component={History}/>
       <Route path="/booking" exact component={Booking}/>

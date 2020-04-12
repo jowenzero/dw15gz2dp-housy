@@ -161,7 +161,7 @@ const Property = () => {
                             </Form.Group>
                             <br/>
                             
-                            <Button variant="primary" type="submit" onClick={signIn} block>
+                            <Button variant="primary" type="submit" href="/" onClick={signIn} block>
                                 Sign In
                             </Button>
                         </Form>
@@ -236,7 +236,7 @@ const Property = () => {
                             </Form.Group>
                             <br/>
                             
-                            <Button variant="primary" type="submit" onClick={signUp} block>
+                            <Button variant="primary" type="submit" href="/" onClick={signUp} block>
                                 Sign Up
                             </Button>
                         </Form>
