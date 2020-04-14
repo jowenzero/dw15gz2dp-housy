@@ -5,13 +5,8 @@ import '../styles/transaction_item.css';
 
 import Action from '../icons/Action.svg';
 import TransactionAction from '../components/transaction_action';
-import Data from '../data/transaction_booking.json';
 
 const TransactionItem = ({item}) => {
-    const data = Data.map((item, index) => (
-        <TransactionAction item={item} key={index}/>
-    ))
-
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 
     const showPopup = () => {
@@ -98,7 +93,7 @@ const TransactionItem = ({item}) => {
             <Modal show={isPopupOpen} onHide={hidePopup} centered>
                 <Modal.Body className="action-area">
                     <p/>
-                   { data }
+                    <TransactionAction item={item} key={item.id}/>
                 </Modal.Body>
             </Modal>
         </>
