@@ -17,7 +17,7 @@ const App = () => (
       <Route path="/history" exact component={History}/>
       <Route path="/booking" exact component={Booking}/>
       <Route path="/profile" exact component={Profile}/>
-      <Route path="/property" exact component={Property}/>
+      <Route path="/property/:id" exact component={Property}/>
       <Route path="/" exact component={Home}/>
       <Route render={() => <h3>404 NOT FOUND</h3>}/>
     </Switch>

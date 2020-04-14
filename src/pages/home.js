@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Login from '../components/login';
 import Filter from '../components/filter';
 import Content from '../components/content';
-import Data from '../data/data.json';
+import Data from '../data/property.json';
 import Transaction from '../components/transaction';
 
 class Home extends Component {
