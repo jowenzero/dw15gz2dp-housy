@@ -53,6 +53,11 @@
 .home-icons {
     position: relative;
     left: -7px;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
+}
+
+.login-text {
+    position: relative;
+    left: 21px;
 }

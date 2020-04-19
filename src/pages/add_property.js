@@ -78,7 +78,7 @@ class AddProperty extends Component {
                             </Form.Group>
                             
                             <br/>
-                            <Button variant="primary" type="submit" href="/" block>
+                            <Button variant="primary" type="submit" block>
                                 Save
                             </Button>
                         </Form>

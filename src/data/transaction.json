@@ -4,41 +4,119 @@
         "name": "Radif Ganteng",
         "typeOfRent": "Year",
         "transferProof": "bca.id",
-        "status": "Approve"
+        "status": "Approve",
+
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Astina",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 30 March 2020",
+        "checkIn": "30 March 2020",
+        "checkOut": "30 March 2021",
+        "amenities": "Furnished",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "rentTime": "1 Year",
+        "total": "Rp. 3.000.000"
     },
     {
         "id": 2,
         "name": "Haris Rahman",
         "typeOfRent": "Year",
         "transferProof": "bni.jpg",
-        "status": "Approve"
+        "status": "Approve",
+
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Diamond",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 30 March 2020",
+        "checkIn": "5 March 2020",
+        "checkOut": "5 March 2021",
+        "amenities": "Furnished",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "rentTime": "1 Year",
+        "total": "Rp.5.000.000"
     },
     {
         "id": 3,
         "name": "Amin Subagiyo",
         "typeOfRent": "Month",
         "transferProof": "permata.jpg",
-        "status": "Cancel"
+        "status": "Cancel",
+
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Sultan",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 30 March 2020",
+        "checkIn": "7 September 2020",
+        "checkOut": "7 Septemver 2021",
+        "amenities": "Furnished",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "rentTime": "1 Year",
+        "total": "Rp.13.000.000"
     },
     {
         "id": 4,
         "name": "Haris Astina",
         "typeOfRent": "Month",
         "transferProof": "permata.jpg",
-        "status": "Pending"
+        "status": "Pending",
+
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Sutra",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 30 March 2020",
+        "checkIn": "1 April 2020",
+        "checkOut": "1 April 2021",
+        "amenities": "Furnished",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "rentTime": "1 Year",
+        "total": "Rp. 3.000.000"
     },
     {
         "id": 5,
         "name": "Aziz Oni On",
         "typeOfRent": "Month",
         "transferProof": "bi.jpg",
-        "status": "Pending"
+        "status": "Pending",
+
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Cemara",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 30 March 2020",
+        "checkIn": "21 January 2020",
+        "checkOut": "21 January 2022",
+        "amenities": "Furnished",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "rentTime": "2 Year",
+        "total": "Rp. 7.000.000"
     },
     {
         "id": 6,
         "name": "Radif Ganteng",
         "typeOfRent": "Year",
         "transferProof": "bni.jpg",
-        "status": "Pending"
+        "status": "Pending",
+
+        "picture": "../images/Receipt.png",
+        "barcode": "../images/Barcode.png",
+        "houseName": "House Diamond",
+        "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
+        "bookDate": "Saturday, 30 March 2020",
+        "checkIn": "16 February 2020",
+        "checkOut": "16 February 2021",
+        "amenities": "Furnished",
+        "gender": "Male",
+        "phone": "0812-8623-8911",
+        "rentTime": "1 Year",
+        "total": "Rp.5.000.000"
     }
 ]

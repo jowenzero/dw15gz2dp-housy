@@ -1,21 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Navbar, Nav , Form, FormControl, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdSearch } from "react-icons/md";
 import { AiOutlineUser, AiOutlineHistory, AiOutlineCalendar, AiOutlineLogout, AiOutlineHome } from "react-icons/ai";
+import { API, setAuthToken } from "../config/api";
 
 import '../styles/header.css';
 
 import Logo from '../icons/Logo.svg'
 
 const HeaderLogin = ({role}) => {
+    const [data, setData] = useState(null);
+    const listAs = localStorage.getItem('userListAs');
+
     const logOut = () => {
         const data = 'false';
         const status = 'Tenant';
+        const token = null;
         localStorage.setItem('userLogin', data);
         localStorage.setItem('userListAs', status);
+        localStorage.setItem('userToken', token);
         window.location.reload(true);
     };
+
+    const fetchData = async () => {
+        try {
+            const token = localStorage.getItem('userToken');
+            setAuthToken(token);
+            const user = await API.get("/user");
+            const { data } = user.data;
+            setData(data);
+        } catch (error) {
+            if (error.code === "ECONNABORTED") {
+                console.log("Network Error!");
+            } else {
+                const { data, status } = error.response;
+                console.log(data.message, status);
+            }
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <Container fluid className="padding">
@@ -45,6 +72,15 @@ const HeaderLogin = ({role}) => {
                             <Dropdown.Item href="history"><AiOutlineHistory className="home-icons"/>History</Dropdown.Item>
                             <Dropdown.Divider/>
                             <Dropdown.Item onClick={ logOut } href="/"><AiOutlineLogout className="home-icons"/>Logout</Dropdown.Item>
+                            { data && 
+                                <p className="login-text">
+                                    Signed In As: 
+                                    <br/> 
+                                    {data.username}
+                                    <br/><p/>
+                                    <p>List As: {listAs}</p>
+                                </p> 
+                            }
                         </Dropdown.Menu>
                     </Dropdown>
                 </Nav>

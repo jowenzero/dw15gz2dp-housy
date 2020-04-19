@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/booking.css';
 
 import Login from '../components/login';
-import Data from '../data/history.json';
+import Data from '../data/booking.json';
 import HistoryItem from '../components/history_item';
 
 const History = () => {
