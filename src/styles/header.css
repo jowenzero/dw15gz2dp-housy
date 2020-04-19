@@ -56,3 +56,8 @@
     width: 30px;
     height: 30px;
 }
+
+.login-text {
+    position: relative;
+    left: 21px;
+}

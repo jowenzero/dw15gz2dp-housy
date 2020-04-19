@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Navbar, Nav, Button, Form, FormControl, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdSearch } from "react-icons/md";
+import { API } from "../config/api";
 
 import '../styles/header.css';
 
@@ -10,37 +11,122 @@ import Logo from '../icons/Logo.svg'
 const Header = () => {
     const [isSignInOpen, setIsSignInOpen] = React.useState(false);
     const [isSignUpOpen, setIsSignUpOpen] = React.useState(false);
+
+    const [userSignIn, setUserSignIn] = React.useState(null);
+    const [passSignIn, setPassSignIn] = React.useState(null);
+
+    const [fullName, setFullName] = React.useState(null);
+    const [userSignUp, setUserSignUp] = React.useState(null);
+    const [email, setEmail] = React.useState(null);
+    const [passSignUp, setPassSignUp] = React.useState(null);
     const [listAs, setListAs] = React.useState("Tenant");
+    const [gender, setGender] = React.useState("Male");
+    const [address, setAddress] = React.useState(null);
 
     const showSignIn = () => {
         setIsSignInOpen(true);
     };
-
     const hideSignIn = () => {
         setIsSignInOpen(false);
     };
-
     const showSignUp = () => {
         setIsSignUpOpen(true);
     };
-
     const hideSignUp = () => {
         setIsSignUpOpen(false);
     };
 
-    const handleOnChange = (event) => {
+    const handleUserSignInChange = (event) => {
+        setUserSignIn(event.target.value);
+    };
+    const handlePassSignInChange = (event) => {
+        setPassSignIn(event.target.value);
+    };
+
+    
+    const handleFullNameChange = (event) => {
+        setFullName(event.target.value);
+    };
+    const handleUserSignUpChange = (event) => {
+        setUserSignUp(event.target.value);
+    };
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+    const handlePassSignUpChange = (event) => {
+        setPassSignUp(event.target.value);
+    };
+    const handleListChange = (event) => {
         setListAs(event.target.value);
     };
-
-    const signIn = () => {
-        const data = 'true';
-        localStorage.setItem('userLogin', data);
+    const handleGenderChange = (event) => {
+        setGender(event.target.value);
+    };
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
     };
 
-    const signUp = () => {
-        const data = 'true';
-        localStorage.setItem('userLogin', data);
-        localStorage.setItem('userListAs', listAs);
+    const signIn = async () => {
+        try {
+            const user = await API.post("/signin", {
+                username: userSignIn,
+                password: passSignIn
+            });
+            const { data } = user.data;
+
+            if (data.ListId === 1)
+                localStorage.setItem('userListAs', 'Owner');
+            else if (data.ListId === 2)
+                localStorage.setItem('userListAs', 'Tenant');
+
+            localStorage.setItem('userToken', data.token);
+            localStorage.setItem('userLogin', 'true');
+        } catch (error) {
+            if (error.code === "ECONNABORTED") {
+                console.log("Network Error!");
+            } else {
+                const { data, status } = error.response;
+                console.log(data.message, status);
+            }
+            localStorage.setItem('userLogin', 'false');
+        }
+    };
+
+    const signUp = async () => {
+        try {
+            let listNum = 2;
+            if (listAs === "Owner")
+                listNum = 1;
+            else if (listAs === "Tenant")
+                listNum = 2;
+
+            const user = await API.post("/signup", {
+                fullName: fullName,
+                username: userSignUp,
+                email: email,
+                password: passSignUp,
+                ListId: listNum,
+                gender: gender,
+                address: address
+            });
+            const { data } = user.data;
+
+            if (listNum === 1)
+                localStorage.setItem('userListAs', 'Owner');
+            else if (listNum === 2)
+                localStorage.setItem('userListAs', 'Tenant');
+
+            localStorage.setItem('userToken', data.token);
+            localStorage.setItem('userLogin', 'true');
+        } catch (error) {
+            if (error.code === "ECONNABORTED") {
+                console.log("Network Error!");
+            } else {
+                const { data, status } = error.response;
+                console.log(data.message, status);
+            }
+            localStorage.setItem('userLogin', 'false');
+        }
     };
 
     return (
@@ -73,12 +159,12 @@ const Header = () => {
                     <Form>
                         <Form.Group controlId="signInUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" required/>
+                            <Form.Control type="text" onChange={handleUserSignInChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signInPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" required/>
+                            <Form.Control type="password" onChange={handlePassSignInChange} required/>
                         </Form.Group>
                         <br/>
                         
@@ -109,29 +195,29 @@ const Header = () => {
                     <Form>
                         <Form.Group controlId="signUpFullName">
                             <Form.Label>Full Name</Form.Label>
-                            <Form.Control type="text"/>
+                            <Form.Control type="text" onChange={handleFullNameChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text"/>
+                            <Form.Control type="text" onChange={handleUserSignUpChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email"/>
+                            <Form.Control type="email" onChange={handleEmailChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password"/>
+                            <Form.Control type="password" onChange={handlePassSignUpChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpListAs">
                             <Form.Label>List As</Form.Label>
                             <Form.Control as="select" required
                                 value={listAs}
-                                onChange={handleOnChange}
+                                onChange={handleListChange}
                             >
                                 <option>Tenant</option>
                                 <option>Owner</option>
@@ -140,7 +226,10 @@ const Header = () => {
 
                         <Form.Group controlId="signUpGender">
                             <Form.Label>Gender</Form.Label>
-                            <Form.Control as="select">
+                            <Form.Control as="select" required
+                                value={gender}
+                                onChange={handleGenderChange}
+                            >
                                 <option>Male</option>
                                 <option>Female</option>
                             </Form.Control>
@@ -153,7 +242,7 @@ const Header = () => {
 
                         <Form.Group controlId="signUpAddress">
                             <Form.Label>Address</Form.Label>
-                            <Form.Control as="textarea" rows="3"/>
+                            <Form.Control as="textarea" rows="3" onChange={handleAddressChange} required/>
                         </Form.Group>
                         <br/>
                         
