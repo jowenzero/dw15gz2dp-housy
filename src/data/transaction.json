@@ -83,7 +83,7 @@
         "id": 5,
         "name": "Aziz Oni On",
         "typeOfRent": "Month",
-        "transferProof": "bi.jpg",
+        "transferProof": "mandiri.id",
         "status": "Pending",
 
         "picture": "../images/Receipt.png",
@@ -103,7 +103,7 @@
         "id": 6,
         "name": "Radif Ganteng",
         "typeOfRent": "Year",
-        "transferProof": "bni.jpg",
+        "transferProof": "citibank.jpg",
         "status": "Pending",
 
         "picture": "../images/Receipt.png",

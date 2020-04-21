@@ -127,9 +127,9 @@
         "name": "House Sunny",
         "price": "Rp.3.000.000 / Year",
         "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
-        "bedrooms": "3",
-        "bathrooms": "2",
-        "area": "1800 ft",
+        "bedrooms": "2",
+        "bathrooms": "1",
+        "area": "1000 ft",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
     {
@@ -144,7 +144,7 @@
         "picture3": "../images/Property3.png",
         "picture4": "../images/Property4.png",
         "name": "House Francis",
-        "price": "Rp.3.000.000 / Year",
+        "price": "Rp.8.000.000 / Year",
         "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
         "bedrooms": "3",
         "bathrooms": "2",
@@ -163,9 +163,9 @@
         "picture3": "../images/Property3.png",
         "picture4": "../images/Property4.png",
         "name": "House Iron",
-        "price": "Rp.3.000.000 / Year",
+        "price": "Rp.6.000.000 / Year",
         "location": "Jl. Elang IV Perum Permata Bintaro Residence, Pondok Aren,Tangerang Selatan",
-        "bedrooms": "3",
+        "bedrooms": "2",
         "bathrooms": "2",
         "area": "1800 ft",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."

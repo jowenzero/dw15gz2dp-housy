@@ -21,6 +21,7 @@ const Header = () => {
     const [passSignUp, setPassSignUp] = React.useState(null);
     const [listAs, setListAs] = React.useState("Tenant");
     const [gender, setGender] = React.useState("Male");
+    const [phone, setPhone] = React.useState(null);
     const [address, setAddress] = React.useState(null);
 
     const showSignIn = () => {
@@ -62,6 +63,9 @@ const Header = () => {
     const handleGenderChange = (event) => {
         setGender(event.target.value);
     };
+    const handlePhoneChange = (event) => {
+        setPhone(event.target.value);
+    };
     const handleAddressChange = (event) => {
         setAddress(event.target.value);
     };
@@ -81,6 +85,7 @@ const Header = () => {
 
             localStorage.setItem('userToken', data.token);
             localStorage.setItem('userLogin', 'true');
+            window.location.reload(true);
         } catch (error) {
             if (error.code === "ECONNABORTED") {
                 console.log("Network Error!");
@@ -107,6 +112,7 @@ const Header = () => {
                 password: passSignUp,
                 ListId: listNum,
                 gender: gender,
+                phone: phone,
                 address: address
             });
             const { data } = user.data;
@@ -118,6 +124,7 @@ const Header = () => {
 
             localStorage.setItem('userToken', data.token);
             localStorage.setItem('userLogin', 'true');
+            window.location.reload(true);
         } catch (error) {
             if (error.code === "ECONNABORTED") {
                 console.log("Network Error!");
@@ -159,16 +166,16 @@ const Header = () => {
                     <Form>
                         <Form.Group controlId="signInUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" onChange={handleUserSignInChange} required/>
+                            <Form.Control type="text" value={userSignIn} onChange={handleUserSignInChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signInPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" onChange={handlePassSignInChange} required/>
+                            <Form.Control type="password" value={passSignIn} onChange={handlePassSignInChange} required/>
                         </Form.Group>
                         <br/>
                         
-                        <Button variant="primary" type="submit" onClick={signIn} block>
+                        <Button variant="primary" onClick={signIn} block>
                             Sign In
                         </Button>
                     </Form>
@@ -195,22 +202,22 @@ const Header = () => {
                     <Form>
                         <Form.Group controlId="signUpFullName">
                             <Form.Label>Full Name</Form.Label>
-                            <Form.Control type="text" onChange={handleFullNameChange} required/>
+                            <Form.Control type="text" value={fullName} onChange={handleFullNameChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" onChange={handleUserSignUpChange} required/>
+                            <Form.Control type="text" value={userSignUp} onChange={handleUserSignUpChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" onChange={handleEmailChange} required/>
+                            <Form.Control type="email" value={email} onChange={handleEmailChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" onChange={handlePassSignUpChange} required/>
+                            <Form.Control type="password" value={passSignUp} onChange={handlePassSignUpChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpListAs">
@@ -237,16 +244,16 @@ const Header = () => {
 
                         <Form.Group controlId="signUpPhone">
                             <Form.Label>Phone</Form.Label>
-                            <Form.Control type="tel" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="Ex. 0812-3456-7890"/>
+                            <Form.Control type="tel" value={phone} pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="Ex. 0812-3456-7890" onChange={handlePhoneChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="signUpAddress">
                             <Form.Label>Address</Form.Label>
-                            <Form.Control as="textarea" rows="3" onChange={handleAddressChange} required/>
+                            <Form.Control as="textarea" rows="3" value={address} onChange={handleAddressChange} required/>
                         </Form.Group>
                         <br/>
                         
-                        <Button variant="primary" type="submit" onClick={signUp} block>
+                        <Button variant="primary" onClick={signUp} block>
                             Sign Up
                         </Button>
                     </Form>
