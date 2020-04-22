@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, Modal, Form, DropdownButton } from 'react-
 import { AiOutlineUser, AiOutlineMail, AiOutlineLock, AiOutlinePhone, AiOutlineHome } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { IoIosTransgender } from "react-icons/io";
+import { API, setAuthToken } from "../config/api";
 
 import '../styles/profile.css';
 
@@ -11,13 +12,59 @@ import Data from '../data/profile.json';
 
 const Profile = () => {
     const [isPasswordOpen, setIsPasswordOpen] = React.useState(false);
+    const [oldPass, setOldPass] = React.useState(null);
+    const [confirmPass, setConfirmPass] = React.useState(null);
+    const [newPass, setNewPass] = React.useState(null);
 
     const showPassword = () => {
         setIsPasswordOpen(true);
     };
-
     const hidePassword = () => {
         setIsPasswordOpen(false);
+    };
+
+    const handleOldPassChange = (event) => {
+        setOldPass(event.target.value);
+        console.log(oldPass, confirmPass, newPass)
+    };
+    const handleConfirmPassChange = (event) => {
+        setConfirmPass(event.target.value);
+    };
+    const handleNewPassChange = (event) => {
+        setNewPass(event.target.value);
+    };
+
+    const changePass = async (event) => {
+        try {
+            event.preventDefault();
+            if (oldPass === confirmPass) {
+                const token = localStorage.getItem('userToken');
+                setAuthToken(token);
+                const user = await API.get("/user");
+                const auth = user.data.data;
+
+                if (auth.password === confirmPass) {
+                    await API.patch("/user", {
+                        password: newPass
+                    });
+                    window.location.reload(true);
+                }
+                else {
+                    console.log("Password did not match!")
+                }
+            }
+            else {
+                console.log("Confirm password did not match!")
+            }
+        } catch (error) {
+            if (error.code === "ECONNABORTED") {
+                console.log("Network Error!");
+            } else {
+                const { data, status } = error.response;
+                console.log(data.message, status);
+            }
+            localStorage.setItem('userLogin', 'false');
+        }
     };
 
     return (
@@ -78,20 +125,29 @@ const Profile = () => {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={changePass}>
                             <Form.Group controlId="passOld">
                                 <Form.Label>Old Password</Form.Label>
-                                <Form.Control type="password" required/>
+                                <Form.Control type="password" required
+                                    value={oldPass}
+                                    onChange={handleOldPassChange} 
+                                />
                             </Form.Group>
 
                             <Form.Group controlId="passConfirm">
                                 <Form.Label>Confirm Password</Form.Label>
-                                <Form.Control type="password" required/>
+                                <Form.Control type="password" required
+                                    value={confirmPass}
+                                    onChange={handleConfirmPassChange} 
+                                />
                             </Form.Group>
 
                             <Form.Group controlId="passNew">
                                 <Form.Label>New Password</Form.Label>
-                                <Form.Control type="password" required/>
+                                <Form.Control type="password" required
+                                    value={newPass}
+                                    onChange={handleNewPassChange} 
+                                />
                             </Form.Group>
 
                             <Button variant="primary" type="submit" block>

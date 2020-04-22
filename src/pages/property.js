@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { IoIosBed } from 'react-icons/io';
 import { FaBath } from 'react-icons/fa';
 import { API } from "../config/api";
@@ -206,7 +207,7 @@ const Property = (props) => {
                             <Form.Control type="date" required/>
                         </Form.Group>
                     
-                        <Button variant="primary" type="submit" href="/booking" block>
+                        <Button variant="primary" type="submit" as={Link} to="/booking" block>
                             Order
                         </Button>
                     </Form>

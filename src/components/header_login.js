@@ -62,14 +62,14 @@ const HeaderLogin = ({role}) => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="profile"><AiOutlineUser className="home-icons"/>Profile</Dropdown.Item>
+                            <Dropdown.Item as={Link} to="/profile"><AiOutlineUser className="home-icons"/>Profile</Dropdown.Item>
                             { role === "Owner" &&
-                                <Dropdown.Item href="add-property"><AiOutlineHome className="home-icons"/>Add Property</Dropdown.Item>
+                                <Dropdown.Item as={Link} to="/add-property"><AiOutlineHome className="home-icons"/>Add Property</Dropdown.Item>
                             }
                             { role === "Tenant" &&
-                                <Dropdown.Item href="booking"><AiOutlineCalendar className="home-icons"/>My Booking</Dropdown.Item>
+                                <Dropdown.Item as={Link} to="/booking"><AiOutlineCalendar className="home-icons"/>My Booking</Dropdown.Item>
                             }
-                            <Dropdown.Item href="history"><AiOutlineHistory className="home-icons"/>History</Dropdown.Item>
+                            <Dropdown.Item as={Link} to="/history"><AiOutlineHistory className="home-icons"/>History</Dropdown.Item>
                             <Dropdown.Divider/>
                             <Dropdown.Item onClick={ logOut } href="/"><AiOutlineLogout className="home-icons"/>Logout</Dropdown.Item>
                             { data && 
