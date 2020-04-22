@@ -8,7 +8,7 @@ import ContentItem from '../components/content_item';
 
 const Content = (props) => {
     const data = props.data.map((item, index) => (
-        <Link to={`/property/${item.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to={`/property/${item.id}`} style={{ textDecoration: 'none', color: 'black' }} key={index}>
             <ContentItem item={item} key={index}/>
         </Link>
     ))
