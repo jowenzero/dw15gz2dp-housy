@@ -4,6 +4,7 @@ import { AiOutlineUser, AiOutlineMail, AiOutlineLock, AiOutlinePhone, AiOutlineH
 import { GoLocation } from "react-icons/go";
 import { IoIosTransgender } from "react-icons/io";
 import { API, setAuthToken } from "../config/api";
+import { useSelector } from "react-redux";
 
 import '../styles/profile.css';
 
@@ -17,6 +18,9 @@ const Profile = () => {
     const [newPass, setNewPass] = React.useState(null);
     const [passFail, setPassFail] = React.useState(false);
     const [passOk, setPassOk] = React.useState(false);
+
+    const data = useSelector(state => state.user.data);
+    const listAs = localStorage.getItem('userListAs');
 
     const showPassword = () => {
         setIsPasswordOpen(true);
@@ -101,19 +105,19 @@ const Profile = () => {
                                 <GoLocation className="profile-icons"/>
                             </Col>
                             <Col xs={6}>
-                                <p className="profile-name">{ item.name }</p>
+                                <p className="profile-name">{ data.fullName }</p>
                                 <p className="profile-desc">Full Name</p>
-                                <p className="profile-name">{ item.email }</p>
+                                <p className="profile-name">{ data.email }</p>
                                 <p className="profile-desc">Email</p>
                                 <p className="profile-name profile-link" onClick={showPassword}>Change Password</p>
                                 <p className="profile-desc">Password</p>
-                                <p className="profile-name">{ item.status }</p>
+                                <p className="profile-name">{ listAs }</p>
                                 <p className="profile-desc">Status</p>
-                                <p className="profile-name">{ item.gender }</p>
+                                <p className="profile-name">{ data.gender }</p>
                                 <p className="profile-desc">Gender</p>
-                                <p className="profile-name">{ item.phone }</p>
+                                <p className="profile-name">{ data.phone }</p>
                                 <p className="profile-desc">Mobile Phone</p>
-                                <p className="profile-name">{ item.address }</p>
+                                <p className="profile-name">{ data.address }</p>
                                 <p className="profile-desc">Address</p>
                             </Col>
                             <Col xs={4}>

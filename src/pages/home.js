@@ -4,21 +4,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Login from '../components/login';
 import Filter from '../components/filter';
 import Content from '../components/content';
-import Data from '../data/property.json';
 import Transaction from '../components/transaction';
 
 class Home extends Component {
-    constructor() {
-        super()
-
-        this.state = {
-            data: Data
-        }
-    }
-
     render() {
-        const state = this.state;
-
         return (
             <div>
                 <Login/>
@@ -26,7 +15,7 @@ class Home extends Component {
                     <Container fluid>
                         <Row>
                             <Col xs={4}><Filter/></Col>
-                            <Col xs={8}><Content data={state.data}/></Col>
+                            <Col xs={8}><Content/></Col>
                         </Row>
                     </Container>
                 } 

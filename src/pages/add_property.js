@@ -85,7 +85,7 @@ const AddProperty = () => {
                 bathNum = 5;
 
             if (!data.typeRent)
-                data.typeRent = "day";
+                data.typeRent = "Day";
 
             let amenities = new Array(0);
             if (data.amenities1) {
@@ -189,9 +189,9 @@ const AddProperty = () => {
                                 value={house.typeRent && house.typeRent}
                                 onChange={handleChange}
                             >
-                                <option value="day">Day</option>
-                                <option value="month">Month</option>
-                                <option value="year">Year</option>
+                                <option>Day</option>
+                                <option>Month</option>
+                                <option>Year</option>
                             </Form.Control>
                         </Form.Group>
 

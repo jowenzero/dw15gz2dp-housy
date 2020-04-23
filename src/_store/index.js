@@ -1,10 +1,15 @@
-import { createStore, combineReducers } from "redux";
-import articles from "../_reducers";
+import { createStore, combineReducers, applyMiddleware  } from "redux";
+import user from "../_reducers/user";
+import house from "../_reducers/house";
+import { logger, promise } from "../middleware";
+
+const middleware = [logger, promise];
 
 const rootReducer = combineReducers({
-    articles,
+    user,
+    house,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(...middleware));
 
 export default store;

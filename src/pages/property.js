@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { IoIosBed } from 'react-icons/io';
 import { FaBath } from 'react-icons/fa';
 import { API } from "../config/api";
+import { useDispatch, useSelector } from "react-redux";
+import { getHouses } from "../_actions/house";
 
 import '../styles/property.css';
 
 import Login from '../components/login';
-import Data from '../data/property.json';
 
 const Property = (props) => {
+    const house = useSelector(state => state.house.data);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getHouses())
+    }, []);
+
     const { match } = props;
     let {id} = match.params;
-    const property = Data[id - 1];
+    const property = house[id - 1];
 
     const [isBookOpen, setIsBookOpen] = React.useState(false);
 
@@ -152,53 +160,54 @@ const Property = (props) => {
     return (
         <div>
             <Login/>
-            <div className="property-bg">
-                <Container fluid className="property-area">
-                    <br/>
-                    <Row>
-                        <Col><img src={ process.env.PUBLIC_URL + property.picture1 } alt=""></img></Col>
-                    </Row>
-                    <p/>
-                    <Row>
-                        <Col xs={4}><img src={ process.env.PUBLIC_URL + property.picture2 } alt=""></img></Col>
-                        <Col xs={4}><img src={ process.env.PUBLIC_URL + property.picture3 } alt="" className="property-pic"></img></Col>
-                        <Col xs={4}><img src={ process.env.PUBLIC_URL + property.picture4 } alt="" className="property-pic2"></img></Col>
-                    </Row>
-                    <br/>
-                    <h3 className="property-name">{ property.name }</h3>
-                    <Row>
-                        <Col xs={8}>
-                            <p className="property-price">{ property.price }</p>
-                            <p className="property-location">{ property.location }</p>
-                        </Col>
-                        <Col xs={4}>
-                            <Row>
-                                <Col xs={4}>
-                                    <p className="property-location property-bold">Bedrooms</p>
-                                    <p className="property-bold-number">{ property.bedrooms } <IoIosBed/></p>
-                                </Col>
-                                <Col xs={4}>
-                                    <p className="property-location property-bold">Bathrooms</p>
-                                    <p className="property-bold-number">{ property.bathrooms } <FaBath/></p>
-                                </Col>
-                                <Col xs={4}>
-                                    <p className="property-location property-bold">Area</p>
-                                    <p className="property-bold-number">{ property.area } </p>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                    <br/>
-                    <h3 className="property-desc-title">Description</h3>
-                    <p className="property-description">{ property.description }</p>
-                    <br/>
-                    { (localStorage.getItem('userListAs') === 'Tenant' || localStorage.getItem('userLogin') === 'false') &&
-                        <Button variant="primary" size="lg" onClick={verifyLogin}>BOOK NOW</Button>
-                    }
-                    <br/><br/><br/><br/>
-                </Container>
-            </div>
-
+            { property &&
+                <div className="property-bg">
+                    <Container fluid className="property-area">
+                        <br/>
+                        <Row>
+                            <Col><img src={ process.env.PUBLIC_URL + "../images/Property1.png" } alt=""></img></Col>
+                        </Row>
+                        <p/>
+                        <Row>
+                            <Col xs={4}><img src={ process.env.PUBLIC_URL + "../images/Property2.png" } alt=""></img></Col>
+                            <Col xs={4}><img src={ process.env.PUBLIC_URL + "../images/Property3.png" } alt="" className="property-pic"></img></Col>
+                            <Col xs={4}><img src={ process.env.PUBLIC_URL + "../images/Property4.png" } alt="" className="property-pic2"></img></Col>
+                        </Row>
+                        <br/>
+                        <h3 className="property-name">{ property.name }</h3>
+                        <Row>
+                            <Col xs={8}>
+                                <p className="property-price">Rp. { property.price } / { property.typeRent }</p>
+                                <p className="property-location">{ property.address }</p>
+                            </Col>
+                            <Col xs={4}>
+                                <Row>
+                                    <Col xs={4}>
+                                        <p className="property-location property-bold">Bedrooms</p>
+                                        <p className="property-bold-number">{ property.bedRoom } <IoIosBed/></p>
+                                    </Col>
+                                    <Col xs={4}>
+                                        <p className="property-location property-bold">Bathrooms</p>
+                                        <p className="property-bold-number">{ property.bathRoom } <FaBath/></p>
+                                    </Col>
+                                    <Col xs={4}>
+                                        <p className="property-location property-bold">Area</p>
+                                        <p className="property-bold-number">{ property.area } ft</p>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <br/>
+                        <h3 className="property-desc-title">Description</h3>
+                        <p className="property-description">{ property.description }</p>
+                        <br/>
+                        { (localStorage.getItem('userListAs') === 'Tenant' || localStorage.getItem('userLogin') === 'false') &&
+                            <Button variant="primary" size="lg" onClick={verifyLogin}>BOOK NOW</Button>
+                        }
+                        <br/><br/><br/><br/>
+                    </Container>
+                </div>
+            }
 
 
 
