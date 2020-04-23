@@ -11,6 +11,7 @@ import Logo from '../icons/Logo.svg'
 const Header = () => {
     const [isSignInOpen, setIsSignInOpen] = React.useState(false);
     const [isSignUpOpen, setIsSignUpOpen] = React.useState(false);
+    const [loginFail, setLoginFail] = React.useState(false);
 
     const [userSignIn, setUserSignIn] = React.useState(null);
     const [passSignIn, setPassSignIn] = React.useState(null);
@@ -20,6 +21,8 @@ const Header = () => {
         setIsSignInOpen(true);
     };
     const hideSignIn = () => {
+        setUserSignIn(null);
+        setPassSignIn(null);
         setIsSignInOpen(false);
     };
     const showSignUp = () => {
@@ -28,6 +31,12 @@ const Header = () => {
     const hideSignUp = () => {
         setUser({});
         setIsSignUpOpen(false);
+    };
+    const showLoginFail = () => {
+        setLoginFail(true);
+    };
+    const hideLoginFail = () => {
+        setLoginFail(false);
     };
 
     const handleUserSignInChange = (event) => {
@@ -59,6 +68,7 @@ const Header = () => {
 
             localStorage.setItem('userToken', data.token);
             localStorage.setItem('userLogin', 'true');
+            hideLoginFail();
             window.location.reload(true);
         } catch (error) {
             if (error.code === "ECONNABORTED") {
@@ -68,6 +78,7 @@ const Header = () => {
                 console.log(data.message, status);
             }
             localStorage.setItem('userLogin', 'false');
+            showLoginFail();
         }
     };
 
@@ -134,7 +145,10 @@ const Header = () => {
 
             
 
-            <Modal show={isSignInOpen} onHide={hideSignIn}>
+            <Modal show={isSignInOpen} onHide={() => {
+                        hideSignIn();
+                        hideLoginFail();
+                    }}>
                 <Modal.Header closeButton>
                     <Modal.Title>Sign In</Modal.Title>
                 </Modal.Header>
@@ -156,7 +170,13 @@ const Header = () => {
                                 onChange={handlePassSignInChange} 
                             />
                         </Form.Group>
-                        <br/>
+
+                        { loginFail === true &&
+                            <p style={{ color: 'red' }}>Login Failed</p>
+                        }
+                        { loginFail === false &&
+                            <br/>
+                        }
                         
                         <Button variant="primary" type="submit" block>
                             Sign In

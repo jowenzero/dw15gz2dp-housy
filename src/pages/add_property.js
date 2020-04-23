@@ -69,6 +69,9 @@ const AddProperty = () => {
             else if (data.bathRoom === "5")
                 bathNum = 5;
 
+            if (!data.typeRent)
+                data.typeRent = "day";
+
             let amenities = new Array(0);
             if (data.amenities1) {
                 amenities.push(data.amenities1); 

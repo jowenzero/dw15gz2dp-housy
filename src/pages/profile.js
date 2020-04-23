@@ -15,12 +15,22 @@ const Profile = () => {
     const [oldPass, setOldPass] = React.useState(null);
     const [confirmPass, setConfirmPass] = React.useState(null);
     const [newPass, setNewPass] = React.useState(null);
+    const [passFail, setPassFail] = React.useState(false);
 
     const showPassword = () => {
         setIsPasswordOpen(true);
     };
     const hidePassword = () => {
+        setOldPass(null);
+        setConfirmPass(null);
+        setNewPass(null);
         setIsPasswordOpen(false);
+    };
+    const showPassFail = () => {
+        setPassFail(true);
+    };
+    const hidePassFail = () => {
+        setPassFail(false);
     };
 
     const handleOldPassChange = (event) => {
@@ -37,25 +47,15 @@ const Profile = () => {
     const changePass = async (event) => {
         try {
             event.preventDefault();
-            if (oldPass === confirmPass) {
-                const token = localStorage.getItem('userToken');
-                setAuthToken(token);
-                const user = await API.get("/user");
-                const auth = user.data.data;
-
-                if (auth.password === confirmPass) {
-                    await API.patch("/user", {
-                        password: newPass
-                    });
-                    window.location.reload(true);
-                }
-                else {
-                    console.log("Password did not match!")
-                }
-            }
-            else {
-                console.log("Confirm password did not match!")
-            }
+            const token = localStorage.getItem('userToken');
+            setAuthToken(token);
+            await API.post("/password", {
+                oldPass: oldPass,
+                confirmPass: confirmPass,
+                newPass: newPass
+            });
+            hidePassFail();
+            hidePassword();
         } catch (error) {
             if (error.code === "ECONNABORTED") {
                 console.log("Network Error!");
@@ -63,7 +63,7 @@ const Profile = () => {
                 const { data, status } = error.response;
                 console.log(data.message, status);
             }
-            localStorage.setItem('userLogin', 'false');
+            showPassFail();
         }
     };
 
@@ -149,6 +149,10 @@ const Profile = () => {
                                     onChange={handleNewPassChange} 
                                 />
                             </Form.Group>
+
+                            { passFail === true &&
+                                <p style={{ color: 'red' }}>Password change failed</p>
+                            }
 
                             <Button variant="primary" type="submit" block>
                                 Save
