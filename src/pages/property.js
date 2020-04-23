@@ -16,8 +16,6 @@ const Property = (props) => {
     const property = Data[id - 1];
 
     const [isBookOpen, setIsBookOpen] = React.useState(false);
-    const [isSignInOpen, setIsSignInOpen] = React.useState(false);
-    const [isSignUpOpen, setIsSignUpOpen] = React.useState(false);
 
     const showBook = () => {
         setIsBookOpen(true);
@@ -25,6 +23,10 @@ const Property = (props) => {
     const hideBook = () => {
         setIsBookOpen(false);
     };
+
+    const [isSignInOpen, setIsSignInOpen] = React.useState(false);
+    const [isSignUpOpen, setIsSignUpOpen] = React.useState(false);
+    const [loginFail, setLoginFail] = React.useState(false);
 
     const [userSignIn, setUserSignIn] = React.useState(null);
     const [passSignIn, setPassSignIn] = React.useState(null);
@@ -34,6 +36,8 @@ const Property = (props) => {
         setIsSignInOpen(true);
     };
     const hideSignIn = () => {
+        setUserSignIn(null);
+        setPassSignIn(null);
         setIsSignInOpen(false);
     };
     const showSignUp = () => {
@@ -42,6 +46,12 @@ const Property = (props) => {
     const hideSignUp = () => {
         setUser({});
         setIsSignUpOpen(false);
+    };
+    const showLoginFail = () => {
+        setLoginFail(true);
+    };
+    const hideLoginFail = () => {
+        setLoginFail(false);
     };
 
     const handleUserSignInChange = (event) => {
@@ -74,6 +84,7 @@ const Property = (props) => {
 
             localStorage.setItem('userToken', data.token);
             localStorage.setItem('userLogin', 'true');
+            hideLoginFail();
             window.location.reload(true);
         } catch (error) {
             if (error.code === "ECONNABORTED") {
@@ -83,6 +94,7 @@ const Property = (props) => {
                 console.log(data.message, status);
             }
             localStorage.setItem('userLogin', 'false');
+            showLoginFail();
         }
     };
 
@@ -217,7 +229,10 @@ const Property = (props) => {
 
 
 
-            <Modal show={isSignInOpen} onHide={hideSignIn}>
+            <Modal show={isSignInOpen} onHide={() => {
+                        hideSignIn();
+                        hideLoginFail();
+                    }}>
                 <Modal.Header closeButton>
                     <Modal.Title>Sign In</Modal.Title>
                 </Modal.Header>
@@ -239,7 +254,13 @@ const Property = (props) => {
                                 onChange={handlePassSignInChange} 
                             />
                         </Form.Group>
-                        <br/>
+
+                        { loginFail === true &&
+                            <p style={{ color: 'red' }}>Login Failed</p>
+                        }
+                        { loginFail === false &&
+                            <br/>
+                        }
                         
                         <Button variant="primary" type="submit" block>
                             Sign In
