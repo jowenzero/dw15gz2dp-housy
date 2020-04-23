@@ -8,6 +8,21 @@ import Login from '../components/login';
 
 const AddProperty = () => {
     const [house, setHouse] = React.useState({});
+    const [houseFail, setHouseFail] = React.useState(false);
+    const [houseOk, setHouseOk] = React.useState(false);
+
+    const showHouseFail = () => {
+        setHouseFail(true);
+    };
+    const hideHouseFail = () => {
+        setHouseFail(false);
+    };
+    const showHouseOk = () => {
+        setHouseOk(true);
+    };
+    const hideHouseOk = () => {
+        setHouseOk(false);
+    };
 
     const handleChange = (event) => {
         const { data } = house;
@@ -92,10 +107,15 @@ const AddProperty = () => {
                 amenities: amenities,
                 bedRoom: bedNum,
                 bathRoom: bathNum,
+                area: data.area,
+                description: data.description,
                 UserId: auth.id,
             });
             setHouse({});
-            window.location.reload(true);
+            showHouseOk();
+            hideHouseFail();
+            document.getElementById("house-form").reset();
+            window.scrollTo(0, 0);
         } catch (error) {
             if (error.code === "ECONNABORTED") {
                 console.log("Network Error!");
@@ -103,6 +123,8 @@ const AddProperty = () => {
                 const { data, status } = error.response;
                 console.log(data.message, status);
             }
+            showHouseFail();
+            hideHouseOk();
         }
     };
 
@@ -112,7 +134,14 @@ const AddProperty = () => {
             <div className="add-prop-bg">
                 <h3 className="add-prop-title">Add Property</h3>
                 <Container fluid className="add-prop-area">
-                    <Form onSubmit={addHouse}>
+                    { houseFail === true &&
+                        <p style={{ color: 'red' }}>Failed to add property!</p>
+                    }
+                    { houseOk === true &&
+                        <p style={{ color: 'green' }}>Property added successfully!</p>
+                    }
+
+                    <Form onSubmit={addHouse} id="house-form">
                         <Form.Group controlId="addPropName">
                             <Form.Label className="add-prop-bold-text">Name Property</Form.Label>
                             <Form.Control type="text" required
@@ -223,6 +252,24 @@ const AddProperty = () => {
                                 <option>4</option>
                                 <option>5</option>
                             </Form.Control>
+                        </Form.Group>
+
+                        <Form.Group controlId="addPropArea">
+                            <Form.Label className="add-prop-bold-text">Area</Form.Label>
+                            <Form.Control type="number" required
+                                name="area"
+                                value={house.area && house.area}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="addPropDescription">
+                            <Form.Label className="add-prop-bold-text">Description</Form.Label>
+                            <Form.Control as="textarea" rows="3" required
+                                name="description"
+                                value={house.description && house.description}
+                                onChange={handleChange}
+                            />
                         </Form.Group>
                         
                         <br/>

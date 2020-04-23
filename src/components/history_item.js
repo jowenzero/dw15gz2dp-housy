@@ -8,7 +8,7 @@ import CircleInline from '../icons/CircleInline.svg';
 import CircleOutline from '../icons/CircleOutline.svg';
 import Approved from '../icons/Approved.svg';
 
-const HistoryItem = ({item}) => {  
+const HistoryItem = ({item}) => {
     return (
         <>
             <Container fluid className="booking-area">
@@ -24,7 +24,15 @@ const HistoryItem = ({item}) => {
                                 <p/>
                                 <p className="booking-location">{item.location}</p>
                                 <p/>
-                                <img src={Approved} alt=""></img>
+                                { item.status === "Approve" &&
+                                    <img src={Approved} alt=""></img>
+                                }
+                                { item.status === "Cancel" &&
+                                    <>
+                                        <p className="booking-cancel-text">Cancel</p>
+                                        <div className="booking-cancel-rect"/>
+                                    </>
+                                }
                             </Col>
                             <Col xs={1}>
                                 <img src={CircleOutline} alt="" className="booking-circle-outline"></img>
@@ -76,7 +84,12 @@ const HistoryItem = ({item}) => {
                 <Row>
                     <Col xs={8}/>
                     <Col xs={2}><p className="booking-bold-text">Total:</p></Col>
-                    <Col><p className="booking-bold-text booking-text-green">{item.total}</p></Col>
+                    { item.status === "Approve" &&
+                        <Col><p className="booking-bold-text booking-text-green">{item.total}</p></Col>
+                    }
+                    { item.status === "Cancel" &&
+                       <Col><p className="booking-bold-text booking-text-red">{item.total}</p></Col>
+                    }
                 </Row>
             </Container>
             <br/><br/>

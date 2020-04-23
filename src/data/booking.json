@@ -14,7 +14,8 @@
         "gender": "Male",
         "phone": "0812-8623-8911",
         "rentTime": "1 Year",
-        "total": "Rp. 3.000.000"
+        "total": "Rp. 3.000.000",
+        "status": "Approve"
     },
     {
         "id": 2,
@@ -31,6 +32,7 @@
         "gender": "Male",
         "phone": "0838-9863-3113",
         "rentTime": "1 Year",
-        "total": "Rp. 3.500.000"
+        "total": "Rp. 3.500.000",
+        "status": "Cancel"
     }
 ]

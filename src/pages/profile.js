@@ -16,6 +16,7 @@ const Profile = () => {
     const [confirmPass, setConfirmPass] = React.useState(null);
     const [newPass, setNewPass] = React.useState(null);
     const [passFail, setPassFail] = React.useState(false);
+    const [passOk, setPassOk] = React.useState(false);
 
     const showPassword = () => {
         setIsPasswordOpen(true);
@@ -24,6 +25,8 @@ const Profile = () => {
         setOldPass(null);
         setConfirmPass(null);
         setNewPass(null);
+        hidePassOk();
+        hidePassFail();
         setIsPasswordOpen(false);
     };
     const showPassFail = () => {
@@ -31,6 +34,12 @@ const Profile = () => {
     };
     const hidePassFail = () => {
         setPassFail(false);
+    };
+    const showPassOk = () => {
+        setPassOk(true);
+    };
+    const hidePassOk = () => {
+        setPassOk(false);
     };
 
     const handleOldPassChange = (event) => {
@@ -55,7 +64,11 @@ const Profile = () => {
                 newPass: newPass
             });
             hidePassFail();
-            hidePassword();
+            showPassOk();
+            setOldPass(null);
+            setConfirmPass(null);
+            setNewPass(null);
+            document.getElementById("pass-form").reset();
         } catch (error) {
             if (error.code === "ECONNABORTED") {
                 console.log("Network Error!");
@@ -63,6 +76,7 @@ const Profile = () => {
                 const { data, status } = error.response;
                 console.log(data.message, status);
             }
+            hidePassOk();
             showPassFail();
         }
     };
@@ -125,7 +139,7 @@ const Profile = () => {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <Form onSubmit={changePass}>
+                        <Form onSubmit={changePass} id="pass-form">
                             <Form.Group controlId="passOld">
                                 <Form.Label>Old Password</Form.Label>
                                 <Form.Control type="password" required
@@ -151,7 +165,10 @@ const Profile = () => {
                             </Form.Group>
 
                             { passFail === true &&
-                                <p style={{ color: 'red' }}>Password change failed</p>
+                                <p style={{ color: 'red' }}>Password change failed!</p>
+                            }
+                            { passOk === true &&
+                                <p style={{ color: 'green' }}>Password changed successfully!</p>
                             }
 
                             <Button variant="primary" type="submit" block>

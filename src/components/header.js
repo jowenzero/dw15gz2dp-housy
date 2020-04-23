@@ -172,7 +172,7 @@ const Header = () => {
                         </Form.Group>
 
                         { loginFail === true &&
-                            <p style={{ color: 'red' }}>Login Failed</p>
+                            <p style={{ color: 'red' }}>Login Failed!</p>
                         }
                         { loginFail === false &&
                             <br/>
