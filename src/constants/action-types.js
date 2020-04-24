@@ -7,3 +7,4 @@ export const GET_HOUSES = "GET_HOUSES";
 
 export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 export const GET_HISTORY = "GET_HISTORY";
+export const GET_BOOKING = "GET_BOOKING";

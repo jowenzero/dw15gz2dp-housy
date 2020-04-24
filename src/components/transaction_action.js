@@ -37,7 +37,6 @@ const TransactionAction = ({item}) => {
         }
     };
 
-
     return (
         <>
             <Container fluid className="booking-area">

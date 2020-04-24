@@ -10,7 +10,6 @@ import Login from '../components/login';
 import HistoryItem from '../components/history_item';
 
 const History = () => {
-
     const history = useSelector(state => state.transaction.historyData);
     const dispatch = useDispatch();
 
