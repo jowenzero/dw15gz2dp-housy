@@ -1,4 +1,4 @@
-import { GET_TRANSACTIONS } from "../constants/action-types";
+import { GET_TRANSACTIONS, GET_HISTORY } from "../constants/action-types";
 import { API, setAuthToken } from "../config/api";
 
 export const getTransactions = () => {
@@ -10,6 +10,22 @@ export const getTransactions = () => {
         setAuthToken(token);
         const transaction = await API.get("/user/transaction");
         return transaction.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  };
+};
+
+export const getHistory = () => {
+  return {
+    type: GET_HISTORY,
+    async payload() {
+      try {
+        const token = localStorage.getItem('userToken');
+        setAuthToken(token);
+        const history = await API.get("/user/history");
+        return history.data;
       } catch (error) {
         console.log(error);
       }
