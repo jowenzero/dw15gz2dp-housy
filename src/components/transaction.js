@@ -40,7 +40,7 @@ const Transaction = () => {
                         </Row>
                         <p className="transaction-item-line"/>
                     </Container>
-                    { data }
+                    { transaction && data }
                 </div>
             </div>
         </div>

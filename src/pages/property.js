@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { IoIosBed } from 'react-icons/io';
 import { FaBath } from 'react-icons/fa';
-import { API } from "../config/api";
+import { API, setAuthToken } from "../config/api";
 import { useDispatch, useSelector } from "react-redux";
 import { getHouses } from "../_actions/house";
 
@@ -12,6 +12,7 @@ import '../styles/property.css';
 import Login from '../components/login';
 
 const Property = (props) => {
+    const users = useSelector(state => state.user.data);
     const houses = useSelector(state => state.house.data);
     const dispatch = useDispatch();
 
@@ -24,12 +25,16 @@ const Property = (props) => {
     const property = houses[id - 1];
 
     const [isBookOpen, setIsBookOpen] = React.useState(false);
+    const [isBookPost, setIsBookPost] = React.useState(false);
 
     const showBook = () => {
         setIsBookOpen(true);
     };
     const hideBook = () => {
         setIsBookOpen(false);
+    };
+    const showBookPost = () => {
+        setIsBookPost(true);
     };
 
     const [isSignInOpen, setIsSignInOpen] = React.useState(false);
@@ -148,6 +153,32 @@ const Property = (props) => {
         }
     };
 
+    const postBooking = async (event) => {
+        try {
+            event.preventDefault();
+            const token = localStorage.getItem('userToken');
+            setAuthToken(token);
+            await API.post("/transaction", {
+                checkin: "26-11-2020",
+                checkout: "27-11-2020",
+                HouseId: property.id,
+                total: property.price,
+                status: "Waiting Payment",
+                attachment: "citibank.id",
+                UserId: users.id,
+                ownerId: property.UserId,
+            });
+            showBookPost();
+        } catch (error) {
+            if (error.code === "ECONNABORTED") {
+                console.log("Network Error!");
+            } else {
+                const { data, status } = error.response;
+                console.log(data.message, status);
+            }
+        }
+    };
+
     const verifyLogin = () => {
         if (localStorage.getItem('userLogin') === 'true') {
             showBook();
@@ -208,7 +239,14 @@ const Property = (props) => {
                     </Container>
                 </div>
             }
-
+            
+            { isBookPost &&
+                <Redirect
+                    to={{
+                    pathname: "/booking",
+                    }}
+                />
+            }
 
 
             <Modal show={isBookOpen} onHide={hideBook}>
@@ -217,18 +255,18 @@ const Property = (props) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={postBooking}>
                         <Form.Group controlId="bookCheckIn">
                             <Form.Label>Check-in</Form.Label>
-                            <Form.Control type="date" required/>
+                            <Form.Control type="date"/>
                         </Form.Group>
 
                         <Form.Group controlId="bookCheckOut">
                             <Form.Label>Check-out</Form.Label>
-                            <Form.Control type="date" required/>
+                            <Form.Control type="date"/>
                         </Form.Group>
                     
-                        <Button variant="primary" type="submit" as={Link} to="/booking" block>
+                        <Button variant="primary" type="submit" block>
                             Order
                         </Button>
                     </Form>

@@ -12,6 +12,8 @@ const ContentItem = ({item}) => {
     else if (item.CityId === 3)
         cityName = "Bandung";  
 
+    const rand = (item.price % 9) + 1;
+
     return (
         <div className="content-item">
             <Container fluid className="content-tag-pos">
@@ -33,7 +35,7 @@ const ContentItem = ({item}) => {
                     </Col>
                 </Row>
             </Container>
-            <img src={ process.env.PUBLIC_URL + "../images/House1.png" } alt="" className="content-image"></img>
+            <img src={ process.env.PUBLIC_URL + `../images/House${rand}.png` } alt="" className="content-image"></img>
             <p className="content-info-1">Rp. { item.price } / { item.typeRent }</p>
             <p className="content-info-2">{ item.bedRoom } Bed, { item.bathRoom } Baths, { item.area } sqft</p>
             <p className="content-info-3">{ cityName }</p>
