@@ -12,7 +12,7 @@ import '../styles/property.css';
 import Login from '../components/login';
 
 const Property = (props) => {
-    const house = useSelector(state => state.house.data);
+    const houses = useSelector(state => state.house.data);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const Property = (props) => {
 
     const { match } = props;
     let {id} = match.params;
-    const property = house[id - 1];
+    const property = houses[id - 1];
 
     const [isBookOpen, setIsBookOpen] = React.useState(false);
 
