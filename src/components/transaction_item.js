@@ -32,7 +32,18 @@ const TransactionItem = ({item}) => {
                     <Col xs={2} className="transaction-item-text">{data.fullName}</Col>
                     <Col xs={2} className="transaction-item-text">{houseData.typeRent}</Col>
                     <Col xs={2} className="transaction-item-text">{item.attachment}</Col>
-                    <Col xs={2} className="transaction-item-text color-orange">{item.status}</Col>
+                    { item.status === "Waiting Payment" &&
+                        <Col xs={2} className="transaction-item-text color-red">{item.status}</Col>
+                    }
+                    { item.status === "Pending" &&
+                        <Col xs={2} className="transaction-item-text color-orange">{item.status}</Col>
+                    }
+                    { item.status === "Approve" &&
+                        <Col xs={2} className="transaction-item-text color-green">{item.status}</Col>
+                    }
+                    { item.status === "Cancel" &&
+                        <Col xs={2} className="transaction-item-text color-red">{item.status}</Col>
+                    }
                     <Col xs={2} className="transaction-item-text">
                         <img src={Action} alt="" onClick={showPopup}></img>
                     </Col>

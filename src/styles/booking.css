@@ -47,6 +47,41 @@
     color: #959595;
 }
 
+.booking-amenities-area {
+    position: relative;
+    height: 37px;
+}
+
+.booking-amenities {
+    position: relative;
+    top: -15px;
+
+    font-family: Montserrat;
+    font-size: 14px;
+
+    color: #959595;
+}
+
+.booking-amenities-2 {
+    position: relative;
+    top: -30px;
+
+    font-family: Montserrat;
+    font-size: 14px;
+
+    color: #959595;
+}
+
+.booking-amenities-3 {
+    position: relative;
+    top: -45px;
+
+    font-family: Montserrat;
+    font-size: 14px;
+
+    color: #959595;
+}
+
 .booking-light-text2 {
     font-family: Montserrat;
     font-style: normal;
@@ -159,6 +194,10 @@
 
 .booking-text-red {
     color: #FF0000;
+}
+
+.booking-text-orange {
+    color: #F7941E;
 }
 
 .booking-text-green {

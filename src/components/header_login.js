@@ -3,7 +3,7 @@ import { Container, Navbar, Nav , Form, FormControl, Dropdown } from 'react-boot
 import { Link } from 'react-router-dom';
 import { MdSearch } from "react-icons/md";
 import { AiOutlineUser, AiOutlineHistory, AiOutlineCalendar, AiOutlineLogout, AiOutlineHome } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUser } from "../_actions/user";
 
 import '../styles/header.css';
@@ -11,9 +11,6 @@ import '../styles/header.css';
 import Logo from '../icons/Logo.svg'
 
 const HeaderLogin = ({role}) => {
-    const listAs = localStorage.getItem('userListAs');
-
-    const data = useSelector(state => state.user.data);
     const dispatch = useDispatch();
 
     const logOut = () => {
@@ -58,15 +55,6 @@ const HeaderLogin = ({role}) => {
                             <Dropdown.Item as={Link} to="/history"><AiOutlineHistory className="home-icons"/>History</Dropdown.Item>
                             <Dropdown.Divider/>
                             <Dropdown.Item onClick={ logOut } href="/"><AiOutlineLogout className="home-icons"/>Logout</Dropdown.Item>
-                            { data && 
-                                <div className="login-text">
-                                    Signed In As: 
-                                    <br/> 
-                                    {data.username}
-                                    <br/><br/>
-                                    <p>List As: {listAs}</p>
-                                </div> 
-                            }
                         </Dropdown.Menu>
                     </Dropdown>
                 </Nav>
