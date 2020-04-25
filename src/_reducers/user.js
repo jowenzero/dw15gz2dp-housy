@@ -3,7 +3,7 @@ import { GET_USER, GET_USERS } from "../constants/action-types";
 const initialState = {
   data: [],
   multiData: [],
-  loading: false,
+  loading: true,
   error: false,
 };
 

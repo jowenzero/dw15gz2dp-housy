@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { IoIosBed } from 'react-icons/io';
@@ -14,11 +14,17 @@ import Login from '../components/login';
 const Property = (props) => {
     const users = useSelector(state => state.user.data);
     const houses = useSelector(state => state.house.data);
+    const loading = useSelector(state => state.house.loading);
+    const error = useSelector(state => state.house.error);
     const dispatch = useDispatch();
 
+    const initFetch = useCallback(() => {
+        dispatch(getHouses());
+    }, [dispatch]);
+    
     useEffect(() => {
-        dispatch(getHouses())
-    }, []);
+        initFetch();
+    }, [initFetch]);
 
     const { match } = props;
     let {id} = match.params;
@@ -191,7 +197,19 @@ const Property = (props) => {
     return (
         <div>
             <Login/>
-            { property &&
+            { localStorage.getItem("userListAs") === "Owner"&&
+                <Redirect to="/"/>
+            }
+
+            { isBookPost &&
+                <Redirect to="/booking"/>
+            }
+
+            { !property &&  
+                <Redirect to="/404"/>
+            }
+
+            { (!loading && !error) &&
                 <div className="property-bg">
                     <Container fluid className="property-area">
                         <br/>
@@ -239,15 +257,6 @@ const Property = (props) => {
                     </Container>
                 </div>
             }
-            
-            { isBookPost &&
-                <Redirect
-                    to={{
-                    pathname: "/booking",
-                    }}
-                />
-            }
-
 
             <Modal show={isBookOpen} onHide={hideBook}>
                 <Modal.Header closeButton>

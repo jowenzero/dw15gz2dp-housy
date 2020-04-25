@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,17 @@ import ContentItem from '../components/content_item';
 
 const Content = () => {
     const house = useSelector(state => state.house.data);
+    const loading = useSelector(state => state.house.loading);
+    const error = useSelector(state => state.house.error);
     const dispatch = useDispatch();
+
+    const initFetch = useCallback(() => {
+        dispatch(getHouses());
+    }, [dispatch]);
+    
+    useEffect(() => {
+        initFetch();
+    }, [initFetch]);
 
     const data = house.map((item, index) => (
         <Link to={`/property/${item.id}`} style={{ textDecoration: 'none', color: 'black' }} key={index}>
@@ -18,14 +28,10 @@ const Content = () => {
         </Link>
     ))
 
-    useEffect(() => {
-        dispatch(getHouses())
-    }, []);
-
     return (
         <Container fluid className="content-bg">
             <div className="flex-container">
-                { data }
+                { (!loading && !error) && data }
             </div>
         </Container>
     );

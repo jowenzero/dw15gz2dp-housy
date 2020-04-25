@@ -37,6 +37,10 @@
     color: #000000;
 }
 
+.color-grey {
+    color: #959595;
+}
+
 .booking-light-text {
     position: relative;
     top: -15px;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 import { getTransactions } from "../_actions/transaction";
@@ -12,17 +12,27 @@ import TransactionItem from '../components/transaction_item';
 
 const Transaction = () => {
     const transaction = useSelector(state => state.transaction.data);
+    const loading = useSelector(state => state.transaction.loading);
+    const error = useSelector(state => state.transaction.error);
+    const userLoading = useSelector(state => state.user.loading);
+    const userError = useSelector(state => state.user.error);
+    const houseLoading = useSelector(state => state.house.loading);
+    const houseError = useSelector(state => state.house.error);
     const dispatch = useDispatch();
+
+    const initFetch = useCallback(() => {
+        dispatch(getTransactions());
+        dispatch(getHouses());
+        dispatch(getUsers());
+    }, [dispatch]);
+    
+    useEffect(() => {
+        initFetch();
+    }, [initFetch]);
     
     const data = transaction.map((item, index) => (
         <TransactionItem item={item} key={index}/>
     ))
-
-    useEffect(() => {
-        dispatch(getTransactions());
-        dispatch(getHouses());
-        dispatch(getUsers());
-    }, []);
 
     return (
         <div>
@@ -40,7 +50,10 @@ const Transaction = () => {
                         </Row>
                         <p className="transaction-item-line"/>
                     </Container>
-                    { transaction && data }
+                    { (!loading && !error 
+                        && !userLoading && !userError 
+                        && !houseLoading && !houseError) 
+                        && data }
                 </div>
             </div>
         </div>

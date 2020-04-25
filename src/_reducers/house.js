@@ -2,7 +2,7 @@ import { GET_HOUSES } from "../constants/action-types";
 
 const initialState = {
   data: [],
-  loading: false,
+  loading: true,
   error: false,
 };
 

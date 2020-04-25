@@ -4,7 +4,7 @@ const initialState = {
   data: [],
   historyData: [],
   bookingData: [],
-  loading: false,
+  loading: true,
   error: false,
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Container, Navbar, Nav , Form, FormControl, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdSearch } from "react-icons/md";
@@ -13,6 +13,14 @@ import Logo from '../icons/Logo.svg'
 const HeaderLogin = ({role}) => {
     const dispatch = useDispatch();
 
+    const initFetch = useCallback(() => {
+        dispatch(getUser());
+    }, [dispatch]);
+    
+    useEffect(() => {
+        initFetch();
+    }, [initFetch]);
+
     const logOut = () => {
         const data = 'false';
         const status = 'Tenant';
@@ -22,10 +30,6 @@ const HeaderLogin = ({role}) => {
         localStorage.setItem('userToken', token);
         window.location.reload(true);
     };
-
-    useEffect(() => {
-        dispatch(getUser())
-    }, []);
 
     return (
         <Container fluid className="padding">

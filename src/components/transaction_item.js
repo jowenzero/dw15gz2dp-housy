@@ -26,30 +26,33 @@ const TransactionItem = ({item}) => {
     
     return (
         <>
-            <Container fluid className="transaction-item-area">
-                <Row>
-                    <Col xs={2} className="transaction-item-text">{item.id}</Col>
-                    <Col xs={2} className="transaction-item-text">{data.fullName}</Col>
-                    <Col xs={2} className="transaction-item-text">{houseData.typeRent}</Col>
-                    <Col xs={2} className="transaction-item-text">{item.attachment}</Col>
-                    { item.status === "Waiting Payment" &&
-                        <Col xs={2} className="transaction-item-text color-red">{item.status}</Col>
-                    }
-                    { item.status === "Pending" &&
-                        <Col xs={2} className="transaction-item-text color-orange">{item.status}</Col>
-                    }
-                    { item.status === "Approve" &&
-                        <Col xs={2} className="transaction-item-text color-green">{item.status}</Col>
-                    }
-                    { item.status === "Cancel" &&
-                        <Col xs={2} className="transaction-item-text color-red">{item.status}</Col>
-                    }
-                    <Col xs={2} className="transaction-item-text">
-                        <img src={Action} alt="" onClick={showPopup}></img>
-                    </Col>
-                </Row>
-                <p className="transaction-item-line"/>
-            </Container>
+            {(data && houseData) &&
+                <Container fluid className="transaction-item-area">
+                    <Row>
+                        <Col xs={2} className="transaction-item-text">{item.id}</Col>
+                        <Col xs={2} className="transaction-item-text">{data.fullName}</Col>
+                        <Col xs={2} className="transaction-item-text">{houseData.typeRent}</Col>
+                        <Col xs={2} className="transaction-item-text">{item.attachment}</Col>
+                        { item.status === "Waiting Payment" &&
+                            <Col xs={2} className="transaction-item-text color-red">{item.status}</Col>
+                        }
+                        { item.status === "Pending" &&
+                            <Col xs={2} className="transaction-item-text color-orange">{item.status}</Col>
+                        }
+                        { item.status === "Approve" &&
+                            <Col xs={2} className="transaction-item-text color-green">{item.status}</Col>
+                        }
+                        { item.status === "Cancel" &&
+                            <Col xs={2} className="transaction-item-text color-red">{item.status}</Col>
+                        }
+                        <Col xs={2} className="transaction-item-text">
+                            <img src={Action} alt="" onClick={showPopup}></img>
+                        </Col>
+                    </Row>
+                    <p className="transaction-item-line"/>
+                </Container>               
+            }
+        
 
             <Modal show={isPopupOpen} onHide={hidePopup} centered>
                 <Modal.Body className="action-area">

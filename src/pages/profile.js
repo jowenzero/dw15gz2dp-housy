@@ -20,6 +20,8 @@ const Profile = () => {
     const [passOk, setPassOk] = React.useState(false);
 
     const data = useSelector(state => state.user.data);
+    const loading = useSelector(state => state.user.loading);
+    const error = useSelector(state => state.user.error);
     const listAs = localStorage.getItem('userListAs');
 
     const showPassword = () => {
@@ -89,53 +91,53 @@ const Profile = () => {
         Data.map(item => (
             <div>
                 <Login/>
-                <div className="profile-bg">
-                    <br/><br/>
-                    <Container fluid className="profile-area">
-                        <br/>
-                        <h3 className="profile-info">Personal Info</h3>
-                        <Row>
-                            <Col xs={1}>
-                                <AiOutlineUser className="profile-icons"/>
-                                <AiOutlineMail className="profile-icons"/>
-                                <AiOutlineLock className="profile-icons"/>
-                                <AiOutlineHome className="profile-icons"/>
-                                <IoIosTransgender className="profile-icons"/>
-                                <AiOutlinePhone className="profile-icons"/>
-                                <GoLocation className="profile-icons"/>
-                            </Col>
-                            <Col xs={6}>
-                                <p className="profile-name">{ data.fullName }</p>
-                                <p className="profile-desc">Full Name</p>
-                                <p className="profile-name">{ data.email }</p>
-                                <p className="profile-desc">Email</p>
-                                <p className="profile-name profile-link" onClick={showPassword}>Change Password</p>
-                                <p className="profile-desc">Password</p>
-                                <p className="profile-name">{ listAs }</p>
-                                <p className="profile-desc">Status</p>
-                                <p className="profile-name">{ data.gender }</p>
-                                <p className="profile-desc">Gender</p>
-                                <p className="profile-name">{ data.phone }</p>
-                                <p className="profile-desc">Mobile Phone</p>
-                                <p className="profile-name">{ data.address }</p>
-                                <p className="profile-desc">Address</p>
-                            </Col>
-                            <Col xs={4}>
-                                <img src={ process.env.PUBLIC_URL + item.picture } alt=""></img>
-                                <br/><br/>
-                                <DropdownButton id="dropdown-basic-button" title="Change Photo Profile">
-                                    <form action="/profile" method="post" enctype="multipart/form-data">
-                                        <input type="file" name="avatar"/>
-                                    </form>
-                                </DropdownButton>
-                            </Col>
-                        </Row>
-                        <br/>
-                    </Container>
-                    <br/><br/><br/><br/><br/><br/>
-                </div>
-
-
+                { (!loading && !error) && 
+                    <div className="profile-bg">
+                        <br/><br/>
+                        <Container fluid className="profile-area">
+                            <br/>
+                            <h3 className="profile-info">Personal Info</h3>
+                            <Row>
+                                <Col xs={1}>
+                                    <AiOutlineUser className="profile-icons"/>
+                                    <AiOutlineMail className="profile-icons"/>
+                                    <AiOutlineLock className="profile-icons"/>
+                                    <AiOutlineHome className="profile-icons"/>
+                                    <IoIosTransgender className="profile-icons"/>
+                                    <AiOutlinePhone className="profile-icons"/>
+                                    <GoLocation className="profile-icons"/>
+                                </Col>
+                                <Col xs={6}>
+                                    <p className="profile-name">{ data.fullName }</p>
+                                    <p className="profile-desc">Full Name</p>
+                                    <p className="profile-name">{ data.email }</p>
+                                    <p className="profile-desc">Email</p>
+                                    <p className="profile-name profile-link" onClick={showPassword}>Change Password</p>
+                                    <p className="profile-desc">Password</p>
+                                    <p className="profile-name">{ listAs }</p>
+                                    <p className="profile-desc">Status</p>
+                                    <p className="profile-name">{ data.gender }</p>
+                                    <p className="profile-desc">Gender</p>
+                                    <p className="profile-name">{ data.phone }</p>
+                                    <p className="profile-desc">Mobile Phone</p>
+                                    <p className="profile-name">{ data.address }</p>
+                                    <p className="profile-desc">Address</p>
+                                </Col>
+                                <Col xs={4}>
+                                    <img src={ process.env.PUBLIC_URL + item.picture } alt=""></img>
+                                    <br/><br/>
+                                    <DropdownButton id="dropdown-basic-button" title="Change Photo Profile">
+                                        <form action="/profile" method="post" enctype="multipart/form-data">
+                                            <input type="file" name="avatar"/>
+                                        </form>
+                                    </DropdownButton>
+                                </Col>
+                            </Row>
+                            <br/>
+                        </Container>
+                        <br/><br/><br/><br/><br/><br/>
+                    </div>
+                }
 
                 <Modal show={isPasswordOpen} onHide={hidePassword}>
                     <Modal.Header closeButton>

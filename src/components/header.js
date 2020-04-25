@@ -17,6 +17,10 @@ const Header = () => {
     const [passSignIn, setPassSignIn] = React.useState(null);
     const [user, setUser] = React.useState({});
 
+    if (localStorage.getItem('userToken') === null) {
+        localStorage.setItem('userLogin', 'false');
+        localStorage.setItem('userListAs', 'Tenant');
+    }
     const showSignIn = () => {
         setIsSignInOpen(true);
     };
