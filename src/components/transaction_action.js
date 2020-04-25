@@ -19,6 +19,14 @@ const TransactionAction = ({item}) => {
     const data = users[item.UserId - 1];
     const houseData = houses[item.HouseId - 1];
 
+    function formatDate(string){
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(string).toLocaleDateString([],options);
+    }
+    const createDate = formatDate(houseData.createdAt)
+    const checkIn = formatDate(item.checkin)
+    const checkOut = formatDate(item.checkout)
+
     const patchTransaction = async (status) => {
         try {
             const token = localStorage.getItem('userToken');
@@ -74,10 +82,10 @@ const TransactionAction = ({item}) => {
                             </Col>
                             <Col xs={3}>
                                 <p className="booking-bold-text">Check-in</p>
-                                <p className="booking-light-text">{item.checkin}</p>
+                                <p className="booking-light-text">{checkIn}</p>
                                 <br/>
                                 <p className="booking-bold-text">Check-out</p>
-                                <p className="booking-light-text">{item.checkout}</p>
+                                <p className="booking-light-text">{checkOut}</p>
                             </Col>
                             <Col xs={3}>
                                 <p className="booking-bold-text">Amenities</p>
@@ -101,7 +109,7 @@ const TransactionAction = ({item}) => {
 
                     <Col xs={3}>
                         <h3 className="booking-bold-title">BOOKING</h3>
-                        <p className="booking-date">{item.checkin}</p>
+                        <p className="booking-date">{createDate}</p>
                         <div className="booking-pic-border">
                         <img src={ process.env.PUBLIC_URL + "../images/Receipt.png" } alt="" className="booking-pic"></img>
                         </div>
@@ -133,7 +141,7 @@ const TransactionAction = ({item}) => {
                         </Row>
                     </Col>
                     <Col xs={2}><p className="booking-bold-text">Long time rent:</p></Col>
-                    <Col><p className="booking-bold-text">1 {houseData.typeRent}</p></Col>
+                    <Col><p className="booking-bold-text">{item.duration} {houseData.typeRent}</p></Col>
                 </Row>
                 <div className="booking-rect-line"/>
 

@@ -31,6 +31,8 @@ const Property = (props) => {
     const property = houses[id - 1];
 
     const [isBookOpen, setIsBookOpen] = React.useState(false);
+    const [isBookOpen2, setIsBookOpen2] = React.useState(false);
+    const [isBookOpen3, setIsBookOpen3] = React.useState(false);
     const [isBookPost, setIsBookPost] = React.useState(false);
 
     const showBook = () => {
@@ -38,6 +40,18 @@ const Property = (props) => {
     };
     const hideBook = () => {
         setIsBookOpen(false);
+    };
+    const showBook2 = () => {
+        setIsBookOpen2(true);
+    };
+    const hideBook2 = () => {
+        setIsBookOpen2(false);
+    };
+    const showBook3 = () => {
+        setIsBookOpen3(true);
+    };
+    const hideBook3 = () => {
+        setIsBookOpen3(false);
     };
     const showBookPost = () => {
         setIsBookPost(true);
@@ -50,6 +64,13 @@ const Property = (props) => {
     const [userSignIn, setUserSignIn] = React.useState(null);
     const [passSignIn, setPassSignIn] = React.useState(null);
     const [user, setUser] = React.useState({});
+
+    const [checkIn, setCheckIn] = React.useState(null);
+    const [checkOut, setCheckOut] = React.useState(null);
+    const [amountMonth, setAmountMonth] = React.useState(1);
+    const [amountYear, setAmountYear] = React.useState(1);
+    const [attachment, setAttachment] = React.useState("bca.id");
+    const [bookFail, setBookFail] = React.useState(false);
 
     const showSignIn = () => {
         setIsSignInOpen(true);
@@ -72,12 +93,35 @@ const Property = (props) => {
     const hideLoginFail = () => {
         setLoginFail(false);
     };
+    const showBookFail = () => {
+        setBookFail(true);
+    };
+    const hideBookFail = () => {
+        setBookFail(false);
+    };
+
 
     const handleUserSignInChange = (event) => {
         setUserSignIn(event.target.value);
     };
     const handlePassSignInChange = (event) => {
         setPassSignIn(event.target.value);
+    };
+
+    const handleCheckInChange = (event) => {
+        setCheckIn(event.target.value);
+    };
+    const handleCheckOutChange = (event) => {
+        setCheckOut(event.target.value);
+    };
+    const handleAmountMonthChange = (event) => {
+        setAmountMonth(event.target.value);
+    };
+    const handleAmountYearChange = (event) => {
+        setAmountYear(event.target.value);
+    };
+    const handleAttachmentChange = (event) => {
+        setAttachment(event.target.value);
     };
 
     const handleUserChange = (event) => {
@@ -164,17 +208,55 @@ const Property = (props) => {
             event.preventDefault();
             const token = localStorage.getItem('userToken');
             setAuthToken(token);
-            await API.post("/transaction", {
-                checkin: "26-11-2020",
-                checkout: "27-11-2020",
-                HouseId: property.id,
-                total: property.price,
-                status: "Waiting Payment",
-                attachment: "citibank.id",
-                UserId: users.id,
-                ownerId: property.UserId,
-            });
-            showBookPost();
+            const oneDay = 1000 * 60 * 60 * 24;
+            const currentDate = new Date();
+            let checkInDate;
+            let checkOutDate;
+            let diff;
+            let total;
+
+            if (property.typeRent === "Day") {
+                checkInDate = new Date(checkIn);
+                checkOutDate = new Date(checkOut);
+                diff = Math.ceil(checkOutDate.getTime() - checkInDate.getTime()) / (oneDay);
+                total = property.price * diff;
+            }
+            else if (property.typeRent === "Month") {
+                checkInDate = new Date(checkIn);
+                checkOutDate = new Date(checkIn);
+                checkOutDate.setDate(checkOutDate.getDate() + (amountMonth * 31));
+                diff = amountMonth;
+                total = property.price * amountMonth;
+            }
+            else if (property.typeRent === "Year") {
+                checkInDate = new Date(checkIn);
+                checkOutDate = new Date(checkIn);
+                checkOutDate.setDate(checkOutDate.getDate() + (amountYear * 365));
+                diff = amountYear;
+                total = property.price * amountYear;
+            }
+
+            const todayDiff = Math.ceil(checkInDate.getTime() - currentDate.getTime()) / (oneDay);
+
+            if (diff >= 1 && todayDiff >= -1) {
+                await API.post("/transaction", {
+                    checkin: checkInDate,
+                    checkout: checkOutDate,
+                    HouseId: property.id,
+                    total: total,
+                    status: "Waiting Payment",
+                    attachment: attachment,
+                    duration: diff,
+                    UserId: users.id,
+                    ownerId: property.UserId,
+                });
+                hideBookFail();
+                showBookPost();
+            }
+            else 
+            {
+                showBookFail();
+            }
         } catch (error) {
             if (error.code === "ECONNABORTED") {
                 console.log("Network Error!");
@@ -187,7 +269,12 @@ const Property = (props) => {
 
     const verifyLogin = () => {
         if (localStorage.getItem('userLogin') === 'true') {
-            showBook();
+            if (property.typeRent === "Day")
+                showBook();
+            else if (property.typeRent === "Month")
+                showBook2();
+            else if (property.typeRent === "Year")
+                showBook3();
         }
         else {
             showSignIn();
@@ -205,11 +292,7 @@ const Property = (props) => {
                 <Redirect to="/booking"/>
             }
 
-            { !property &&  
-                <Redirect to="/404"/>
-            }
-
-            { (!loading && !error) &&
+            { (!loading && !error && property) &&
                 <div className="property-bg">
                     <Container fluid className="property-area">
                         <br/>
@@ -267,13 +350,31 @@ const Property = (props) => {
                     <Form onSubmit={postBooking}>
                         <Form.Group controlId="bookCheckIn">
                             <Form.Label>Check-in</Form.Label>
-                            <Form.Control type="date"/>
+                            <Form.Control type="date" onChange={handleCheckInChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="bookCheckOut">
                             <Form.Label>Check-out</Form.Label>
-                            <Form.Control type="date"/>
+                            <Form.Control type="date" onChange={handleCheckOutChange}/>
                         </Form.Group>
+
+                        <Form.Group controlId="bookTransfer">
+                            <Form.Label>Transfer via</Form.Label>
+                            <Form.Control as="select" required
+                                value={ attachment } 
+                                onChange={handleAttachmentChange}
+                            >
+                                <option value="bca.id">BCA</option>
+                                <option value="bni.id">BNI</option>
+                                <option value="permata.id">Permata</option>
+                                <option value="mandiri.id">Mandiri</option>
+                                <option value="citibank.id">Citibank</option>
+                            </Form.Control>
+                        </Form.Group>
+
+                        { bookFail === true &&
+                            <p style={{ color: 'red' }}>Book Date Invalid!</p>
+                        }
                     
                         <Button variant="primary" type="submit" block>
                             Order
@@ -282,7 +383,89 @@ const Property = (props) => {
                 </Modal.Body>
             </Modal>
 
+            <Modal show={isBookOpen2} onHide={hideBook2}>
+                <Modal.Header closeButton>
+                    <Modal.Title>How long will you stay</Modal.Title>
+                </Modal.Header>
 
+                <Modal.Body>
+                    <Form onSubmit={postBooking}>
+                        <Form.Group controlId="bookCheckIn">
+                            <Form.Label>Check-in</Form.Label>
+                            <Form.Control type="date" onChange={handleCheckInChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="bookCheckOut">
+                            <Form.Label>Amount of Month(s)</Form.Label>
+                            <Form.Control type="number" value={ amountMonth } onChange={handleAmountMonthChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="bookTransfer">
+                            <Form.Label>Transfer via</Form.Label>
+                            <Form.Control as="select" required
+                                value={ attachment } 
+                                onChange={handleAttachmentChange}
+                            >
+                                <option value="bca.id">BCA</option>
+                                <option value="bni.id">BNI</option>
+                                <option value="permata.id">Permata</option>
+                                <option value="mandiri.id">Mandiri</option>
+                                <option value="citibank.id">Citibank</option>
+                            </Form.Control>
+                        </Form.Group>
+
+                        { bookFail === true &&
+                            <p style={{ color: 'red' }}>Book Date Invalid!</p>
+                        }
+                    
+                        <Button variant="primary" type="submit" block>
+                            Order
+                        </Button>
+                    </Form>
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={isBookOpen3} onHide={hideBook3}>
+                <Modal.Header closeButton>
+                    <Modal.Title>How long will you stay</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <Form onSubmit={postBooking}>
+                        <Form.Group controlId="bookCheckIn">
+                            <Form.Label>Check-in</Form.Label>
+                            <Form.Control type="date" onChange={handleCheckInChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="bookCheckOut">
+                            <Form.Label>Amount of Year(s)</Form.Label>
+                            <Form.Control type="number" value={ amountYear } onChange={handleAmountYearChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="bookTransfer">
+                            <Form.Label>Transfer via</Form.Label>
+                            <Form.Control as="select" required
+                                value={ attachment } 
+                                onChange={handleAttachmentChange}
+                            >
+                                <option value="bca.id">BCA</option>
+                                <option value="bni.id">BNI</option>
+                                <option value="permata.id">Permata</option>
+                                <option value="mandiri.id">Mandiri</option>
+                                <option value="citibank.id">Citibank</option>
+                            </Form.Control>
+                        </Form.Group>
+
+                        { bookFail === true &&
+                            <p style={{ color: 'red' }}>Book Date Invalid!</p>
+                        }
+                    
+                        <Button variant="primary" type="submit" block>
+                            Order
+                        </Button>
+                    </Form>
+                </Modal.Body>
+            </Modal>
 
 
             <Modal show={isSignInOpen} onHide={() => {
