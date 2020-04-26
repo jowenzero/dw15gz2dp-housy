@@ -198,7 +198,7 @@ const AddProperty = () => {
                         <Form.Group controlId="addPropAmenities">
                             <Form.Label className="add-prop-bold-text">Amenities</Form.Label>
                             <br/>
-                            <Form.Check inline type="checkbox" 
+                            <Form.Check custom inline type="checkbox" 
                                 name="amenities1" 
                                 value="Furnished"
                                 className="add-prop-text" 
@@ -206,7 +206,7 @@ const AddProperty = () => {
                                 id="1"
                                 onChange={handleCheckBoxChange}
                             />
-                            <Form.Check inline type="checkbox" 
+                            <Form.Check custom inline type="checkbox" 
                                 name="amenities2" 
                                 value="Pet Allowed"
                                 className="add-prop-text" 
@@ -214,7 +214,7 @@ const AddProperty = () => {
                                 id="2"
                                 onChange={handleCheckBoxChange}
                             />
-                            <Form.Check inline type="checkbox" 
+                            <Form.Check custom inline type="checkbox" 
                                 name="amenities3" 
                                 value="Shared Accomodation"
                                 className="add-prop-text" 

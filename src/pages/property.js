@@ -350,12 +350,12 @@ const Property = (props) => {
                     <Form onSubmit={postBooking}>
                         <Form.Group controlId="bookCheckIn">
                             <Form.Label>Check-in</Form.Label>
-                            <Form.Control type="date" onChange={handleCheckInChange}/>
+                            <Form.Control type="date" onChange={handleCheckInChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="bookCheckOut">
                             <Form.Label>Check-out</Form.Label>
-                            <Form.Control type="date" onChange={handleCheckOutChange}/>
+                            <Form.Control type="date" onChange={handleCheckOutChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="bookTransfer">
@@ -392,12 +392,12 @@ const Property = (props) => {
                     <Form onSubmit={postBooking}>
                         <Form.Group controlId="bookCheckIn">
                             <Form.Label>Check-in</Form.Label>
-                            <Form.Control type="date" onChange={handleCheckInChange}/>
+                            <Form.Control type="date" onChange={handleCheckInChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="bookCheckOut">
                             <Form.Label>Amount of Month(s)</Form.Label>
-                            <Form.Control type="number" value={ amountMonth } onChange={handleAmountMonthChange}/>
+                            <Form.Control type="number" value={ amountMonth } onChange={handleAmountMonthChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="bookTransfer">
@@ -434,12 +434,12 @@ const Property = (props) => {
                     <Form onSubmit={postBooking}>
                         <Form.Group controlId="bookCheckIn">
                             <Form.Label>Check-in</Form.Label>
-                            <Form.Control type="date" onChange={handleCheckInChange}/>
+                            <Form.Control type="date" onChange={handleCheckInChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="bookCheckOut">
                             <Form.Label>Amount of Year(s)</Form.Label>
-                            <Form.Control type="number" value={ amountYear } onChange={handleAmountYearChange}/>
+                            <Form.Control type="number" value={ amountYear } onChange={handleAmountYearChange} required/>
                         </Form.Group>
 
                         <Form.Group controlId="bookTransfer">

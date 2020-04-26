@@ -1,4 +1,4 @@
-import { GET_HOUSES } from "../constants/action-types";
+import { GET_HOUSES, GET_CITY } from "../constants/action-types";
 import { API } from "../config/api";
 
 export const getHouses = (typeRent, budget) => {
@@ -21,6 +21,24 @@ export const getHouses = (typeRent, budget) => {
           const houses = await API.get("/houses")
           return houses.data;
         }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  };
+};
+
+export const getCity = (CityId) => {
+  return {
+    type: GET_CITY,
+    async payload() {
+      try {
+        const houses = await API.get("/houses", {
+          params: {
+            CityId: CityId
+          }
+        });
+        return houses.data;
       } catch (error) {
         console.log(error);
       }

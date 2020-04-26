@@ -3,6 +3,8 @@ import { Container, Navbar, Nav, Button, Form, FormControl, Modal } from 'react-
 import { Link } from 'react-router-dom';
 import { MdSearch } from "react-icons/md";
 import { API } from "../config/api";
+import { useDispatch } from "react-redux";
+import { getCity } from "../_actions/house";
 
 import '../styles/header.css';
 
@@ -55,6 +57,26 @@ const Header = () => {
             data: { ...data, [event.target.name]: event.target.value },
         });
     };
+
+    let [city, setCity] = React.useState(null);
+
+    const handleCityChange = (event) => {
+        setCity(event.target.value);
+    };
+
+    const dispatch = useDispatch();
+
+    const fetchHouse = () => {
+        if (city === "Jakarta")
+            city = 1;
+        else if (city === "Tangerang")
+            city = 2;
+        else if (city === "Bandung")
+            city = 3;
+
+        dispatch(getCity(city));
+        window.scrollTo(0, 0);
+    }
 
     const signIn = async (event) => {
         try {
@@ -134,9 +156,9 @@ const Header = () => {
                 <Navbar.Brand><Link to="/"><img src={Logo} alt=""></img></Link></Navbar.Brand>
 
                 <Form inline className="home-rect">
-                    <FormControl type="text" placeholder="Search location" className="mr-sm-2 home-search-text" />
+                    <FormControl type="text" placeholder="Search location" className="mr-sm-2 home-search-text" onChange={handleCityChange} value={city}/>
                     <div className="home-search-line"/>
-                    <MdSearch className="home-icons"/>
+                    <MdSearch className="home-icons" onClick={fetchHouse}/>
                 </Form>
                 
                 <Nav>

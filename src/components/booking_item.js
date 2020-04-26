@@ -70,7 +70,7 @@ const BookingItem = ({item}) => {
     let checkOut;
 
     if (data && houseData) {
-        createDate = formatDate(houseData.createdAt)
+        createDate = formatDate(item.createdAt)
         checkIn = formatDate(item.checkin)
         checkOut = formatDate(item.checkout)
     }

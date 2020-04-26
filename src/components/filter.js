@@ -67,9 +67,9 @@ const Filter = () => {
             <Form>
                 <div className="mb-3">
                     <Form.Group controlId="filterAmenities">
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Furnished" id="1"/>
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Pet Allowed" id="2"/>
-                        <Form.Check type="checkbox" className="filter-regular-text" label="Shared Accomodation" id="3"/>
+                        <Form.Check custom type="checkbox" className="filter-regular-text" label="Furnished" id="1"/>
+                        <Form.Check custom type="checkbox" className="filter-regular-text" label="Pet Allowed" id="2"/>
+                        <Form.Check custom type="checkbox" className="filter-regular-text" label="Shared Accomodation" id="3"/>
                     </Form.Group>
                 </div>
             </Form>

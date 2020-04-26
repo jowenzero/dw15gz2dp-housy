@@ -5,6 +5,7 @@ import { MdSearch } from "react-icons/md";
 import { AiOutlineUser, AiOutlineHistory, AiOutlineCalendar, AiOutlineLogout, AiOutlineHome } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { getUser } from "../_actions/user";
+import { getCity } from "../_actions/house";
 
 import '../styles/header.css';
 
@@ -31,15 +32,33 @@ const HeaderLogin = ({role}) => {
         window.location.reload(true);
     };
 
+    let [city, setCity] = React.useState(null);
+
+    const handleCityChange = (event) => {
+        setCity(event.target.value);
+    };
+
+    const fetchHouse = () => {
+        if (city === "Jakarta")
+            city = 1;
+        else if (city === "Tangerang")
+            city = 2;
+        else if (city === "Bandung")
+            city = 3;
+
+        dispatch(getCity(city));
+        window.scrollTo(0, 0);
+    }
+
     return (
         <Container fluid className="padding">
             <Navbar bg="white" className="justify-content-between" fixed="top">
                 <Navbar.Brand><Link to="/"><img src={Logo} alt=""></img></Link></Navbar.Brand>
 
                 <Form inline className="home-rect">
-                    <FormControl type="text" placeholder="Search location" className="mr-sm-2 home-search-text" />
+                    <FormControl type="text" placeholder="Search location" className="mr-sm-2 home-search-text" onChange={handleCityChange} value={city}/>
                     <div className="home-search-line"/>
-                    <MdSearch className="home-icons"/>
+                    <MdSearch className="home-icons" onClick={fetchHouse}/>
                 </Form>
                 
                 <Nav>

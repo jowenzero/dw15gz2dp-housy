@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from "react-redux";
+import QRCode from 'qrcode.react';
 
 import '../styles/booking.css';
 
@@ -23,9 +24,10 @@ const HistoryItem = ({item}) => {
     let createDate;
     let checkIn;
     let checkOut;
-    
+    const QRNumber = item.id.toString();
+
     if (data && houseData) {
-        createDate = formatDate(houseData.createdAt)
+        createDate = formatDate(item.createdAt)
         checkIn = formatDate(item.checkin)
         checkOut = formatDate(item.checkout)
     }
@@ -92,7 +94,7 @@ const HistoryItem = ({item}) => {
                             <Col xs={3}>
                                 <h3 className="booking-bold-title">INVOICE</h3>
                                 <p className="booking-date">{createDate}</p>
-                                <img src={ process.env.PUBLIC_URL + "../images/Barcode.png" } alt="" className="booking-barcode"></img>
+                                <QRCode value={QRNumber} className="booking-barcode"/>
                             </Col>
                         </Row>
 

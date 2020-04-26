@@ -23,9 +23,15 @@ const TransactionAction = ({item}) => {
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(string).toLocaleDateString([],options);
     }
-    const createDate = formatDate(houseData.createdAt)
-    const checkIn = formatDate(item.checkin)
-    const checkOut = formatDate(item.checkout)
+    let createDate;
+    let checkIn;
+    let checkOut;
+
+    if (data && houseData) {
+        createDate = formatDate(item.createdAt)
+        checkIn = formatDate(item.checkin)
+        checkOut = formatDate(item.checkout)
+    }
 
     const patchTransaction = async (status) => {
         try {

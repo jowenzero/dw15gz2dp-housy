@@ -180,10 +180,8 @@
 
 .booking-barcode {
     position: relative;
-    width: 100px;
-    height: 132px;
-    top: 20px;
-    left: 50px;
+    top: 10px;
+    left: 30px;
 }
 
 .booking-rect-line {
