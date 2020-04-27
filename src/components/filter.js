@@ -87,10 +87,14 @@ const Filter = () => {
                 <Col xs={3}><Button variant="primary" size="lg" onClick={() => {
                     dispatch(getHouses());
                     window.scrollTo(0, 0);
+                    setTypeRent(null);
+                    setBudget(null);
                 }}>RESET</Button></Col>
                 <Col xs={5}><Button variant="primary" size="lg" onClick={() => {
                     dispatch(getHouses(typeRent, budget));
                     window.scrollTo(0, 0);
+                    setTypeRent(null);
+                    setBudget(null);
                 }}>APPLY</Button></Col>
             </Row>
             <br/><br/>

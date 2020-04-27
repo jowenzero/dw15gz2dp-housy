@@ -118,13 +118,17 @@ const Header = () => {
             else if (data.listAs === "Tenant")
                 listNum = 2;
 
+            let gender = "Male";
+            if (data.gender === "Female")
+                gender = "Female";
+
             const newUser = await API.post("/signup", {
                 fullName: data.fullName,
                 username: data.username,
                 email: data.email,
                 password: data.password,
                 listId: listNum,
-                gender: data.gender,
+                gender: gender,
                 phone: data.phone,
                 address: data.address
             });
