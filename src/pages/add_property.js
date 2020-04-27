@@ -100,7 +100,7 @@ const AddProperty = () => {
 
             await API.post("/house", {
                 name: data.name,
-                CityId: cityNum,
+                cityId: cityNum,
                 address: data.address,
                 price: data.price,
                 typeRent: data.typeRent,
@@ -109,7 +109,7 @@ const AddProperty = () => {
                 bathRoom: bathNum,
                 area: data.area,
                 description: data.description,
-                UserId: auth.id,
+                userId: auth.id,
             });
             setHouse({});
             showHouseOk();

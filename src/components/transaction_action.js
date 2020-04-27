@@ -16,8 +16,8 @@ const TransactionAction = ({item}) => {
     const users = useSelector(state => state.user.multiData);
     const houses = useSelector(state => state.house.data);
 
-    const data = users[item.UserId - 1];
-    const houseData = houses[item.HouseId - 1];
+    const data = users[item.userId - 1];
+    const houseData = houses[item.houseId - 1];
 
     function formatDate(string){
         var options = { year: 'numeric', month: 'long', day: 'numeric' };

@@ -35,7 +35,7 @@ export const getCity = (CityId) => {
       try {
         const houses = await API.get("/houses", {
           params: {
-            CityId: CityId
+            cityId: CityId
           }
         });
         return houses.data;

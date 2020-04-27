@@ -18,23 +18,47 @@ const reducer = (state = initialState, action) => {
         loading: true,
       };
     case `${GET_TRANSACTIONS}_FULFILLED`:
-      return {
-        ...state,
-        data: action.payload.data,
-        loading: false,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          data: action.payload.data,
+          loading: false,
+        };
+      }
+      else {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
     case `${GET_HISTORY}_FULFILLED`:
-      return {
-        ...state,
-        historyData: action.payload.data,
-        loading: false,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          historyData: action.payload.data,
+          loading: false,
+        };
+      }
+      else {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
     case `${GET_BOOKING}_FULFILLED`:
-      return {
-        ...state,
-        bookingData: action.payload.data,
-        loading: false,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          bookingData: action.payload.data,
+          loading: false,
+        };
+      }
+      else {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
     case `${GET_TRANSACTIONS}_REJECTED`:
     case `${GET_HISTORY}_REJECTED`:
     case `${GET_BOOKING}_REJECTED`:

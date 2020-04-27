@@ -87,9 +87,9 @@ const Header = () => {
             });
             const { data } = user.data;
 
-            if (data.ListId === 1)
+            if (data.listId === 1)
                 localStorage.setItem('userListAs', 'Owner');
-            else if (data.ListId === 2)
+            else if (data.listId === 2)
                 localStorage.setItem('userListAs', 'Tenant');
 
             localStorage.setItem('userToken', data.token);
@@ -123,7 +123,7 @@ const Header = () => {
                 username: data.username,
                 email: data.email,
                 password: data.password,
-                ListId: listNum,
+                listId: listNum,
                 gender: data.gender,
                 phone: data.phone,
                 address: data.address

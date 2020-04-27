@@ -140,9 +140,9 @@ const Property = (props) => {
             });
             const { data } = user.data;
 
-            if (data.ListId === 1)
+            if (data.listId === 1)
                 localStorage.setItem('userListAs', 'Owner');
-            else if (data.ListId === 2)
+            else if (data.listId === 2)
                 localStorage.setItem('userListAs', 'Tenant');
 
             localStorage.setItem('userToken', data.token);
@@ -176,7 +176,7 @@ const Property = (props) => {
                 username: data.username,
                 email: data.email,
                 password: data.password,
-                ListId: listNum,
+                listId: listNum,
                 gender: data.gender,
                 phone: data.phone,
                 address: data.address
@@ -242,13 +242,13 @@ const Property = (props) => {
                 await API.post("/transaction", {
                     checkin: checkInDate,
                     checkout: checkOutDate,
-                    HouseId: property.id,
+                    houseId: property.id,
                     total: total,
                     status: "Waiting Payment",
                     attachment: attachment,
                     duration: diff,
-                    UserId: users.id,
-                    ownerId: property.UserId,
+                    userId: users.id,
+                    ownerId: property.userId,
                 });
                 hideBookFail();
                 showBookPost();

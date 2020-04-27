@@ -16,11 +16,19 @@ const reducer = (state = initialState, action) => {
       };
     case `${GET_HOUSES}_FULFILLED`:
     case `${GET_CITY}_FULFILLED`:
-      return {
-        ...state,
-        data: action.payload.data,
-        loading: false,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          data: action.payload.data,
+          loading: false,
+        };
+      }
+      else {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
     case `${GET_HOUSES}_REJECTED`:
     case `${GET_CITY}_REJECTED`:
       return {

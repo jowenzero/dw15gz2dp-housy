@@ -11,8 +11,8 @@ const TransactionItem = ({item}) => {
     const users = useSelector(state => state.user.multiData);
     const houses = useSelector(state => state.house.data);
 
-    const data = users[item.UserId - 1];
-    const houseData = houses[item.HouseId - 1];
+    const data = users[item.userId - 1];
+    const houseData = houses[item.houseId - 1];
 
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 

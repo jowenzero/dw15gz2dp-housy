@@ -16,17 +16,33 @@ const reducer = (state = initialState, action) => {
         loading: true,
       };
     case `${GET_USER}_FULFILLED`:
-      return {
-        ...state,
-        data: action.payload.data,
-        loading: false,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          data: action.payload.data,
+          loading: false,
+        };
+      }
+      else {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
     case `${GET_USERS}_FULFILLED`:
-      return {
-        ...state,
-        multiData: action.payload.data,
-        loading: false,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          multiData: action.payload.data,
+          loading: false,
+        };
+      }
+      else {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
     case `${GET_USER}_REJECTED`:
     case `${GET_USERS}_REJECTED`:
       return {

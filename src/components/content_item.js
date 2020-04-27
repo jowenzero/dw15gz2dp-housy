@@ -5,11 +5,11 @@ import '../styles/content_item.css';
 
 const ContentItem = ({item}) => {
     let cityName = "Jakarta";
-    if (item.CityId === 1)
+    if (item.cityId === 1)
         cityName = "Jakarta";
-    else if (item.CityId === 2)
+    else if (item.cityId === 2)
         cityName = "Tangerang";
-    else if (item.CityId === 3)
+    else if (item.cityId === 3)
         cityName = "Bandung";  
 
     const rand = (item.price % 9) + 1;
