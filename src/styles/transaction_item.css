@@ -48,7 +48,7 @@
     position: relative;
     left: -310px;
     width: 1100px;
-    height: 570px;
+    min-height: 20px;
 
     background: #FFFFFF;
     border-radius: 5px;

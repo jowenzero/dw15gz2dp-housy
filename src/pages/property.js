@@ -6,6 +6,7 @@ import { FaBath } from 'react-icons/fa';
 import { API, setAuthToken } from "../config/api";
 import { useDispatch, useSelector } from "react-redux";
 import { getHouses } from "../_actions/house";
+import Markdown from 'markdown-to-jsx';
 
 import '../styles/property.css';
 
@@ -130,6 +131,10 @@ const Property = (props) => {
             data: { ...data, [event.target.name]: event.target.value },
         });
     };
+
+    const formatNumber = (num) => {
+        return Intl.NumberFormat('de-DE').format(num);
+    }
 
     const signIn = async (event) => {
         try {
@@ -309,7 +314,7 @@ const Property = (props) => {
                         <h3 className="property-name">{ property.name }</h3>
                         <Row>
                             <Col xs={8}>
-                                <p className="property-price">Rp. { property.price } / { property.typeRent }</p>
+                                <p className="property-price">Rp. { formatNumber(property.price) } / { property.typeRent }</p>
                                 <p className="property-location">{ property.address }</p>
                             </Col>
                             <Col xs={4}>
@@ -324,14 +329,18 @@ const Property = (props) => {
                                     </Col>
                                     <Col xs={4}>
                                         <p className="property-location property-bold">Area</p>
-                                        <p className="property-bold-number">{ property.area } ft</p>
+                                        <p className="property-bold-number">{ formatNumber(property.area) } ft</p>
                                     </Col>
                                 </Row>
                             </Col>
                         </Row>
                         <br/>
                         <h3 className="property-desc-title">Description</h3>
-                        <p className="property-description">{ property.description }</p>
+                        <p className="property-description">
+                            <Markdown options={{ forceBlock: true }}>
+                                { property.description }
+                            </Markdown>
+                        </p>
                         <br/>
                         { (localStorage.getItem('userListAs') === 'Tenant' || localStorage.getItem('userLogin') === 'false') &&
                             <Button variant="primary" size="lg" onClick={verifyLogin}>BOOK NOW</Button>

@@ -33,6 +33,7 @@ const Content = () => {
             <div className="flex-container">
                 { (!loading && !error) && data }
             </div>
+            <br/>
         </Container>
     );
 }

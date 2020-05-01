@@ -1,12 +1,12 @@
 .add-prop-bg {
     background: #F9F9F9;
-    min-height: 1250px;
+    min-height: 1450px;
 }
 
 .add-prop-area {
     position: relative;
     max-width: 1204px;
-    height: 900px;
+    min-height: 900px;
     left: 0px;
     top: 80px;
 }

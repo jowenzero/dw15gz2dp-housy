@@ -17,6 +17,10 @@ const HistoryItem = ({item}) => {
     const data = users[item.userId - 1];
     const houseData = houses[item.houseId - 1];
 
+    const formatNumber = (num) => {
+        return Intl.NumberFormat('de-DE').format(num);
+    }
+
     function formatDate(string){
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(string).toLocaleDateString([],options);
@@ -130,10 +134,10 @@ const HistoryItem = ({item}) => {
                             <Col xs={8}/>
                             <Col xs={2}><p className="booking-bold-text">Total:</p></Col>
                             { item.status === "Approve" &&
-                                <Col><p className="booking-bold-text booking-text-green">Rp. {item.total}</p></Col>
+                                <Col><p className="booking-bold-text booking-text-green">Rp. {formatNumber(item.total)}</p></Col>
                             }
                             { item.status === "Cancel" &&
-                                <Col><p className="booking-bold-text booking-text-red">Rp. {item.total}</p></Col>
+                                <Col><p className="booking-bold-text booking-text-red">Rp. {formatNumber(item.total)}</p></Col>
                             }
                         </Row>
                     </>

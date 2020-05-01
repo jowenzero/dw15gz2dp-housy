@@ -1,6 +1,9 @@
 import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { API, setAuthToken } from "../config/api";
+import { Redirect } from 'react-router-dom';
+import MarkdownIt from 'markdown-it'
+import MdEditor from 'react-markdown-editor-lite'
 
 import '../styles/add_property.css';
 
@@ -10,6 +13,7 @@ const AddProperty = () => {
     const [house, setHouse] = React.useState({});
     const [houseFail, setHouseFail] = React.useState(false);
     const [houseOk, setHouseOk] = React.useState(false);
+    const [text, setText] = React.useState(null);
 
     const showHouseFail = () => {
         setHouseFail(true);
@@ -108,16 +112,16 @@ const AddProperty = () => {
                 bedRoom: bedNum,
                 bathRoom: bathNum,
                 area: data.area,
-                description: data.description,
+                description: text.text,
                 userId: auth.id,
             });
             setHouse({});
-            showHouseOk();
             hideHouseFail();
-            document.getElementById("house-form").reset();
-            window.scrollTo(0, 0);
+            showHouseOk();
+            // document.getElementById("house-form").reset();
+            // window.scrollTo(0, 0);
         } catch (error) {
-            if (error.code === "ECONNABORTED") {
+            if (error.code === "ECONNABORTED" || !house) {
                 console.log("Network Error!");
             } else {
                 const { data, status } = error.response;
@@ -128,9 +132,16 @@ const AddProperty = () => {
         }
     };
 
+    const mdParser = new MarkdownIt(/* Markdown-it options */);
+
     return (
         <div>
             <Login/>
+
+            { houseOk &&
+                <Redirect to="/"/>
+            }
+
             <div className="add-prop-bg">
                 <h3 className="add-prop-title">Add Property</h3>
                 <Container fluid className="add-prop-area">
@@ -265,10 +276,12 @@ const AddProperty = () => {
 
                         <Form.Group controlId="addPropDescription">
                             <Form.Label className="add-prop-bold-text">Description</Form.Label>
-                            <Form.Control as="textarea" rows="3" required
+                            <MdEditor
                                 name="description"
-                                value={house.description && house.description}
-                                onChange={handleChange}
+                                style={{ height: '300px', width: '100%' }}
+                                value=""
+                                renderHTML={(text) => mdParser.render(text)}
+                                onChange={(text) => setText(text)}
                             />
                         </Form.Group>
                         
@@ -276,6 +289,7 @@ const AddProperty = () => {
                         <Button variant="primary" type="submit" block>
                             Save
                         </Button>
+                        <br/><br/><br/>
                     </Form>
                 </Container>
             </div>

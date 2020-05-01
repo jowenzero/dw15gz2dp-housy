@@ -61,6 +61,10 @@ const BookingItem = ({item}) => {
         }
     };
 
+    const formatNumber = (num) => {
+        return Intl.NumberFormat('de-DE').format(num);
+    }
+
     function formatDate(string){
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(string).toLocaleDateString([],options);
@@ -179,10 +183,10 @@ const BookingItem = ({item}) => {
                             <Col xs={8}/>
                             <Col xs={2}><p className="booking-bold-text">Total:</p></Col>
                             { item.status === "Waiting Payment" &&
-                                <Col><p className="booking-bold-text booking-text-red">Rp. {item.total}</p></Col>
+                                <Col><p className="booking-bold-text booking-text-red">Rp. {formatNumber(item.total)}</p></Col>
                             }
                             { item.status === "Pending" &&
-                                <Col><p className="booking-bold-text booking-text-orange">Rp. {item.total}</p></Col>
+                                <Col><p className="booking-bold-text booking-text-orange">Rp. {formatNumber(item.total)}</p></Col>
                             }
                         </Row>
                     </>
